@@ -1,0 +1,28 @@
+---
+import { type Language, type SitePage } from '../config/pages';
+import { site } from '../config/site';
+import { interfaceText } from '../config/interface';
+import Header from '../components/Header.astro';
+import '../styles/main.css';
+import '../styles/responsive.css';
+
+interface Props { page: SitePage; language: Language; title: string; description: string }
+const { page, language, title, description } = Astro.props;
+const text = interfaceText[language];
+---
+<!doctype html>
+<html lang={language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={site.publication.robots} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{text.skip}</a>
+    <Header page={page} language={language} />
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer"><p>{text.footer}</p></footer>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+---
+import { pages, pageUrl, type Language, type SitePage } from '../config/pages';
+import { interfaceText } from '../config/interface';
+interface Props { page: SitePage; language: Language }
+const { page, language } = Astro.props;
+const text = interfaceText[language];
+const alternate = language === 'el' ? 'en' : 'el';
+---
+<header class="site-header">
+  <a class="brand" href={pageUrl(pages[0], language)}>
+    <span>{text.brand}</span>
+    <small>{text.provisional}</small>
+  </a>
+  <div class="navigation-bar">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>
+      {text.menu}<span aria-hidden="true"> +</span>
+    </button>
+    <nav id="primary-navigation" aria-label={text.navigation}>
+      <ul>{pages.map((item) => <li><a href={pageUrl(item, language)} aria-current={item.id === page.id ? 'page' : undefined}>{item.labels[language]}</a></li>)}</ul>
+    </nav>
+    <a class="language-switch" href={pageUrl(page, alternate)} lang={alternate} hreflang={alternate} aria-label={text.switchLanguage}>
+      {alternate === 'en' ? 'English' : 'Ελληνικά'}<span aria-hidden="true"> ↗</span>
+    </a>
+  </div>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = document.querySelector<HTMLElement>('#primary-navigation');
+  if (button && navigation) {
+    const mobile = window.matchMedia('(max-width: 47.99rem)');
+    const setOpen = (open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      navigation.hidden = mobile.matches && !open;
+    };
+    const syncViewport = () => {
+      // Keep focused controls visible when switching between layouts.
+      const focusedInNavigation = navigation.contains(document.activeElement);
+      const focusedOnButton = document.activeElement === button;
+      button.hidden = !mobile.matches;
+      setOpen(false);
+      if (mobile.matches && focusedInNavigation) button.focus();
+      if (!mobile.matches && focusedOnButton) navigation.querySelector('a')?.focus();
+    };
+    button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobile.matches && button.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        button.focus();
+      }
+    });
+    mobile.addEventListener('change', syncViewport);
+    syncViewport();
+  }
+</script>

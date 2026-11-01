@@ -1,0 +1,19 @@
+---
+import { languages, pages, type Language, type SitePage } from '../config/pages';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Home from '../components/Home.astro';
+
+export function getStaticPaths() {
+  return pages.flatMap((page) => languages.map((language) => ({
+    params: { path: page.routes[language] || undefined },
+    props: { page, language },
+  })));
+}
+
+interface Props { page: SitePage; language: Language }
+const { page, language } = Astro.props;
+const content = page.content[language];
+---
+<SiteLayout page={page} language={language} title={content.title} description={content.description}>
+  <Home content={content} />
+</SiteLayout>
