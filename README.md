@@ -2,17 +2,58 @@
 
 A static Astro demonstration for one psychologist, with Greek Home at the deployment root and English Home at `en/`. Content and branding are explicitly provisional. The remaining page slices are tracked under [implementation specification #8](https://github.com/LaskasP/the-art-of-healing/issues/8).
 
-## Local development
+## Build and run locally
 
-Use Node.js 22.23.4 or newer (Node 24 LTS recommended) and npm. Install the locked dependencies and the acceptance-test browser:
+### First-time setup
+
+Install Node.js 22.23.4 or newer (Node 24 LTS recommended); npm is included with Node.js. Open PowerShell in the project folder and install the locked dependencies:
 
 ```powershell
+cd C:\Repos\the-art-of-healing
+node --version
+npm --version
 npm ci
-npx playwright install chromium
+```
+
+Run `npm ci` again after pulling changes that update `package-lock.json`. Playwright's browser is only needed for tests, not for building or running the website.
+
+### Run while developing
+
+```powershell
 npm run dev
 ```
 
-By default, open `http://localhost:4321/the-art-of-healing/` or `http://localhost:4321/the-art-of-healing/en/`. There is no browser-language redirection. `npm run dev -- --host 127.0.0.1` limits development access to this machine.
+Keep the terminal running and open either page:
+
+- Greek: <http://localhost:4321/the-art-of-healing/>
+- English: <http://localhost:4321/the-art-of-healing/en/>
+
+Astro reloads the page when you edit source files. There is no browser-language redirection. Stop the server with **Ctrl+C**. If port 4321 is occupied, use the URL printed in the terminal or choose a port with `npm run dev -- --port 4325`. `npm run dev -- --host 127.0.0.1` limits development access to this machine.
+
+### Build and preview the production website
+
+Stop the development server first, then run:
+
+```powershell
+npm run check
+npm run build
+npm run preview
+```
+
+`check` validates Astro and TypeScript. `build` generates the static website in `dist/`. `preview` serves that generated website locally, using the same Greek and English URLs above by default. Open it through the preview server rather than double-clicking an HTML file. Stop preview with **Ctrl+C**.
+
+Preview does not rebuild when you edit source files: stop it, run `npm run build` again, then restart `npm run preview`. Node.js is needed for development and building; the generated website needs only static hosting in production.
+
+### Run validation and browser tests
+
+Install the test browser once, then run validation:
+
+```powershell
+npx playwright install chromium
+npm run validate
+```
+
+`validate` runs typechecking and the browser acceptance suite. The suite builds the website itself, so no server needs to be started manually.
 
 | Command | Purpose |
 | --- | --- |
