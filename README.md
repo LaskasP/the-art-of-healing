@@ -9,9 +9,6 @@ A static Astro demonstration for one psychologist, with Greek pages at the deplo
 Install Node.js 22.23.4 or newer (Node 24 LTS recommended); npm is included with Node.js. Open PowerShell in the project folder and install the locked dependencies:
 
 ```powershell
-cd C:\Repos\the-art-of-healing
-node --version
-npm --version
 npm ci
 ```
 
