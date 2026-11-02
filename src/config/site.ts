@@ -1,3 +1,5 @@
+import { contact } from './contact';
+
 // Build-time deployment settings. Supply environment variables in the shell or CI.
 const origin = new URL(process.env.SITE_ORIGIN ?? 'https://laskasp.github.io');
 if (!['https:', 'http:'].includes(origin.protocol) || origin.pathname !== '/' || origin.search || origin.hash || origin.username || origin.password) {
@@ -13,12 +15,5 @@ export const site = {
   base: base === '/' ? '/' : `${base.replace(/\/$/, '')}/`,
   // Keep demonstration publication crawlable so search engines can read noindex.
   publication: { stage: 'demonstration', robots: 'noindex, follow' },
-  // Real, verified practice details belong here when supplied. Never publish fixtures.
-  contact: {
-    telephone: null,
-    email: null,
-    address: null,
-    workingHours: null,
-    directionsUrl: null,
-  },
+  contact,
 } as const;

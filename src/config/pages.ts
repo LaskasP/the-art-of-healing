@@ -1,6 +1,7 @@
 import { home } from '../content/home';
 import { biography } from '../content/biography';
 import { services } from '../content/services';
+import { contact } from '../content/contact';
 
 export const languages = ['el', 'en'] as const;
 export type Language = (typeof languages)[number];
@@ -27,6 +28,13 @@ export const pages = [
     routes: { el: 'services', en: 'en/services' },
     labels: { el: 'Υπηρεσίες', en: 'Services' },
     content: services,
+  },
+  {
+    id: 'contact',
+    template: 'contact',
+    routes: { el: 'contact', en: 'en/contact' },
+    labels: { el: 'Επικοινωνία', en: 'Contact' },
+    content: contact,
   },
 ] as const;
 export type SitePage = (typeof pages)[number];

@@ -3,6 +3,7 @@ import { languages, pages, type Language, type SitePage } from '../config/pages'
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Home from '../components/Home.astro';
 import ContentPage from '../components/ContentPage.astro';
+import Contact from '../components/Contact.astro';
 
 export function getStaticPaths() {
   return pages.flatMap((page) => languages.map((language) => ({
@@ -18,5 +19,7 @@ const content = page.content[language];
 <SiteLayout page={page} language={language} title={content.title} description={content.description}>
   {page.template === 'home'
     ? <Home content={page.content[language]} />
-    : <ContentPage content={page.content[language]} />}
+    : page.template === 'contact'
+      ? <Contact content={page.content[language]} language={language} />
+      : <ContentPage content={page.content[language]} />}
 </SiteLayout>

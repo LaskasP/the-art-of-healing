@@ -1,6 +1,6 @@
 # The art of healing
 
-A static Astro demonstration for one psychologist, with Greek pages at the deployment root and English pages under `en/`. Home, Biography (`bio/`) and Services (`services/`) are available in both languages. Biography contains explicit placeholders; Services displays an under-construction graphic. Content and branding are provisional. The remaining slices are tracked under [implementation specification #8](https://github.com/LaskasP/the-art-of-healing/issues/8).
+A static Astro demonstration for one psychologist, with Greek pages at the deployment root and English pages under `en/`. Home, Biography (`bio/`), Services (`services/`) and Contact (`contact/`) are available in both languages. Biography contains explicit placeholders; Services displays an under-construction graphic; Contact identifies details that have not yet been supplied. Content and branding are provisional. The remaining slices are tracked under [implementation specification #8](https://github.com/LaskasP/the-art-of-healing/issues/8).
 
 ## Build and run locally
 
@@ -61,13 +61,15 @@ npm run validate
 | `npm test` | Build and run browser acceptance checks at both deployment bases |
 | `npm run validate` | Typecheck, then run the acceptance suite |
 
-The Playwright suite starts production preview servers on ports 4321 and 4322. Stop local development/preview servers using those ports first. Its separate builds live in `dist/root/` and `dist/repository/`. Run a focused check with `npx playwright test tests/home.spec.ts --project repository-base --grep "mobile menu"`. A failed test retains a trace in `test-results/`; layout tests also save desktop/mobile screenshots there for visual review.
+The Playwright suite starts production preview servers on ports 4321, 4322 and 4323. Stop local development/preview servers using those ports first. Its normal builds live in `dist/root/` and `dist/repository/`. A separate Contact fixture build lives in `.test-build/contact/`, outside the publishable `dist/` directory. The fixture builder copies sources into an OS temporary directory, substitutes only that copy's contact settings, builds, and removes the temporary copy. It never modifies production sources. Tests verify that fixture contact values are absent from both normal demonstration builds. Never publish `.test-build/`.
+
+Run focused checks with `npx playwright test tests/contact.spec.ts` or `npx playwright test tests/contact-fixture.spec.ts --project contact-fixture`. For mobile menu checks, use `npx playwright test tests/home.spec.ts --project repository-base --grep "mobile menu"`. A failed test retains a trace in `test-results/`; layout tests also save desktop/mobile screenshots there for visual review.
 
 The tests use only the delivered website: direct language routes, navigation, switching, mobile keyboard/menu behavior, metadata, crawling, loaded assets, narrow-screen reflow, and navigation without JavaScript. Supplement automation with visual review of both languages, keyboard focus, contrast, and browser zoom. Automated checks do not establish WCAG conformance.
 
 ## Settings and deployment paths
 
-`src/config/site.ts` centralizes the origin, deployment base, publication state, and shared contact settings. Contact values remain `null` until verified data is supplied. Build-time environment variables override the deployment defaults:
+`src/config/site.ts` centralizes the origin, deployment base and publication state, and exposes shared contact settings from `src/config/contact.ts`. Contact values remain `null` until verified data is supplied. Build-time environment variables override the deployment defaults:
 
 | Setting | Default | Domain-root example |
 | --- | --- | --- |
@@ -90,8 +92,26 @@ The result is HTML, CSS and a small navigation script, requiring no production a
 
 ## Editing and extending
 
+### Supplying verified contact details
+
+Edit `src/config/contact.ts` after the actual practice details have been verified. `site.contact` exposes this single source to the Contact template and any future footer contact presentation; do not duplicate values in page copy or layouts.
+
+| Field | Verified value to supply |
+| --- | --- |
+| `telephone` | An international telephone number beginning with `+` and country code, followed by digits without spaces; used as visible text and the `tel:` destination. |
+| `email` | The actual email address, used as visible text and the `mailto:` destination. |
+| `address` | An object with `el` and `en` strings for the same Athens office address. Use `\n` for line breaks if needed. |
+| `workingHours` | An object with `el` and `en` strings describing the same verified schedule; line breaks are supported. |
+| `directionsUrl` | The verified HTTPS Google Maps directions URL for that Athens office, opened as an ordinary external link in the same tab. Check that it leads to the correct office. |
+
+Keep any unavailable field `null`. Each missing field renders an explicit localized placeholder and produces no contact link. The address and working hours require both translations. Athens remains the only physical office; Korinthos is part of the service area. Contact headings, metadata, placeholder wording and geography text live together in `src/content/contact.ts`; actual contact values belong only in the shared settings. No contact values are currently repeated in the footer.
+
+Rebuild after changing settings, inspect both `/contact/` and `/en/contact/` under the configured base, and check the phone, email and directions destinations. `tests/fixtures/contact.ts` contains conspicuously marked test data for the isolated supplied-details acceptance build; never copy its values into the production settings. The normal Contact tests expect missing details until real data is supplied, so update those expectations when supplying verified values. Adding real details does not change the demonstration's `noindex` state.
+
+### Page sources and templates
+
 - `src/config/pages.ts` holds stable page identities, localized routes and navigation labels. Only implemented pages appear in navigation. The same registry drives route generation and equivalent-page language links.
-- `src/content/home.ts`, `biography.ts` and `services.ts` each contain both languages of one page, including titles and descriptions. Keep page copy in its bilingual content module. `src/config/interface.ts` holds shared interface wording.
+- `src/content/home.ts`, `biography.ts`, `services.ts` and `contact.ts` each contain both languages of one page, including titles and descriptions. Keep page copy in its bilingual content module. `src/config/interface.ts` holds shared interface wording.
 - `src/pages/[...path].astro` generates both localized static URLs; `src/layouts/SiteLayout.astro` and `src/components/` provide shared presentation.
 - `src/styles/main.css` begins with editable theme colors and the system-font stack, followed by base/component rules. `src/styles/responsive.css` is loaded afterward for responsive overrides. The earth-tone palette and text-only provisional logo await visual approval; no final logo asset is claimed.
 
