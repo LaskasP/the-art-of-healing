@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import homeCopy from '../src/content/home.json' with { type: 'json' };
 
 test('visitors open either Home language directly without browser-language redirection', async ({ page, browser, baseURL }) => {
   const context = await browser.newContext({ locale: 'en-US' });
@@ -6,18 +7,18 @@ test('visitors open either Home language directly without browser-language redir
   await englishBrowser.goto(`${baseURL}/`);
   await expect(englishBrowser).toHaveURL(`${baseURL}/`);
   await expect(englishBrowser.locator('html')).toHaveAttribute('lang', 'el');
-  await expect(englishBrowser.getByRole('heading', { level: 1 })).toHaveText('Ένας χώρος για εσάς');
+  await expect(englishBrowser.getByRole('heading', { level: 1 })).toHaveText('Να δώσουμε χώρο σε όσα σας απασχολούν');
   await context.close();
 
   await page.goto(`${baseURL}/en/`);
   await expect(page).toHaveURL(`${baseURL}/en/`);
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('A space for you');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Making room for what is on your mind');
 });
 
 for (const language of [
-  { route: '/', lang: 'el', home: 'Αρχική', navigation: 'Κύρια πλοήγηση', menu: 'Μενού', switchName: 'Read this page in English', alternate: '/en/', title: 'Αρχική | Η τέχνη της ίασης — Δομικό δείγμα' },
-  { route: '/en/', lang: 'en', home: 'Home', navigation: 'Main navigation', menu: 'Menu', switchName: 'Διαβάστε αυτή τη σελίδα στα Ελληνικά', alternate: '/', title: 'Home | The art of healing — Structural demonstration' },
+  { route: '/', lang: 'el', home: 'Αρχική', navigation: 'Κύρια πλοήγηση', menu: 'Μενού', switchName: 'Read this page in English', alternate: '/en/', content: homeCopy.el },
+  { route: '/en/', lang: 'en', home: 'Home', navigation: 'Main navigation', menu: 'Menu', switchName: 'Διαβάστε αυτή τη σελίδα στα Ελληνικά', alternate: '/', content: homeCopy.en },
 ]) {
   test(`${language.lang}: desktop navigation and equivalent-page switching work`, async ({ page, baseURL }, testInfo) => {
     await page.goto(`${baseURL}${language.route}`);
@@ -75,10 +76,8 @@ for (const language of [
     page.on('requestfailed', request => failures.push(request.url()));
     page.on('response', response => { if (response.status() >= 400) failures.push(response.url()); });
     await page.goto(`${baseURL}${language.route}`);
-    await expect(page).toHaveTitle(language.title);
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', language.lang === 'el'
-      ? 'Δομικό δείγμα ιστοσελίδας ενός ψυχολόγου: γραφείο στην Αθήνα, εξυπηρέτηση Αθήνας και Κορίνθου και διαδικτυακές συνεδρίες.'
-      : 'A structural demonstration for one psychologist: an Athens office, a service area covering Athens and Korinthos, and online sessions.');
+    await expect(page).toHaveTitle(language.content.title);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', language.content.description);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
     const robots = await request.get(`${baseURL}/robots.txt`);
     expect(robots.ok()).toBeTruthy();

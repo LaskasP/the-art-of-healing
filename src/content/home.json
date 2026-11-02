@@ -1,0 +1,146 @@
+{
+  "el": {
+    "title": "Πολυξένη Πέττα | Ψυχολόγος στον Πειραιά",
+    "description": "Γνωρίστε την ψυχολόγο Πολυξένη Πέττα. Ατομική ψυχολογική υποστήριξη ενηλίκων και εφήβων και συνεδρίες ζεύγους, στον Πειραιά και διαδικτυακά.",
+    "heading": "Να δώσουμε χώρο σε όσα σας απασχολούν",
+    "paragraphs": [
+      "Κάποιες φορές γνωρίζουμε τι μας δυσκολεύει. Άλλες, έχουμε μόνο την αίσθηση ότι κάτι χρειάζεται να αλλάξει. Η αναζήτηση υποστήριξης μπορεί να ξεκινήσει και από εκεί, χωρίς να χρειάζεται να έχετε ήδη όλες τις απαντήσεις.",
+      "Είμαι η Πολυξένη Πέττα, ψυχολόγος με ολοκληρωμένη τετραετή εκπαίδευση στη Συστημική Ψυχοθεραπεία. Στο ιδιωτικό μου γραφείο στον Πειραιά και διαδικτυακά, πραγματοποιώ ατομικές συνεδρίες ψυχολογικής υποστήριξης με ενήλικες και εφήβους, καθώς και συνεδρίες ζεύγους."
+    ],
+    "links": [
+      {
+        "page": "contact",
+        "label": "Επικοινωνήστε μαζί μου"
+      },
+      {
+        "page": "biography",
+        "label": "Γνωρίστε με"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Ο άνθρωπος μέσα στις σχέσεις του",
+        "paragraphs": [
+          "Η συστημική προσέγγιση, στην οποία έχω εκπαιδευτεί, βλέπει τον άνθρωπο σε σύνδεση με τις σχέσεις και το περιβάλλον του. Δίνει χώρο να κατανοήσουμε πώς όσα ζούμε στην οικογένεια, στη συντροφική σχέση, στην εργασία και στην καθημερινότητα συνδέονται με τον τρόπο που αισθανόμαστε και επικοινωνούμε.",
+          "Σημαντική για εμένα είναι η δημιουργία μιας σχέσης εμπιστοσύνης και αποδοχής, με σεβασμό στη μοναδικότητα κάθε ανθρώπου."
+        ]
+      },
+      {
+        "heading": "Πώς μπορούμε να συναντηθούμε",
+        "links": [
+          {
+            "page": "services",
+            "label": "Περισσότερα για τις συνεδρίες"
+          }
+        ],
+        "entries": [
+          {
+            "heading": "Ατομικές συνεδρίες ενηλίκων",
+            "text": "Ένας προσωπικός χώρος για να μιλήσετε για όσα σας απασχολούν και να διερευνήσετε τις ανάγκες και τις σχέσεις σας."
+          },
+          {
+            "heading": "Ατομικές συνεδρίες εφήβων",
+            "text": "Ψυχολογική υποστήριξη στην εφηβεία, με χώρο για τις σκέψεις, τα συναισθήματα και τις σχέσεις που αποκτούν σημασία σε αυτή την περίοδο."
+          },
+          {
+            "heading": "Συνεδρίες ζεύγους",
+            "text": "Ένας χώρος συζήτησης για όσα συμβαίνουν στη σχέση και για τους τρόπους με τους οποίους επικοινωνείτε και συνδέεστε."
+          }
+        ]
+      },
+      {
+        "heading": "Στον Πειραιά και διαδικτυακά",
+        "officeGallery": true,
+        "paragraphs": [
+          "Το ιδιωτικό μου γραφείο βρίσκεται στον Πειραιά. Η περιοχή εξυπηρέτησης περιλαμβάνει την Αθήνα και την Κόρινθο, ενώ υπάρχει και δυνατότητα διαδικτυακών συνεδριών."
+        ]
+      },
+      {
+        "heading": "Το πρώτο βήμα μπορεί να είναι μια συζήτηση",
+        "invitation": true,
+        "paragraphs": [
+          "Μπορείτε να επικοινωνήσετε μαζί μου για να συζητήσουμε το αίτημά σας και τη δυνατότητα μιας πρώτης συνάντησης."
+        ],
+        "links": [
+          {
+            "page": "contact",
+            "label": "Στοιχεία επικοινωνίας"
+          }
+        ]
+      }
+    ],
+    "eyebrow": "Πολυξένη Πέττα · Ψυχολόγος"
+  },
+  "en": {
+    "title": "Polyxeni Petta | Psychologist in Piraeus",
+    "description": "Meet psychologist Polyxeni Petta. Individual psychological support for adults and adolescents and couples sessions, in Piraeus and online.",
+    "heading": "Making room for what is on your mind",
+    "paragraphs": [
+      "Sometimes we know what is troubling us. At other times, we simply feel that something needs to change. Seeking support can begin there, without having all the answers.",
+      "I am Polyxeni Petta, a psychologist who has completed a four-year training programme in systemic psychotherapy. I offer individual psychological support for adults and adolescents, as well as couples sessions, at my private practice in Piraeus and online."
+    ],
+    "links": [
+      {
+        "page": "contact",
+        "label": "Get in touch"
+      },
+      {
+        "page": "biography",
+        "label": "Meet Polyxeni"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Understanding people through their relationships",
+        "paragraphs": [
+          "The systemic approach, in which I have trained, considers people in the context of their relationships and surroundings. It makes room to explore how experiences within our families, intimate relationships, work and everyday lives connect with the way we feel and communicate.",
+          "Building a relationship of trust and acceptance, with respect for each person's individuality, matters to me."
+        ]
+      },
+      {
+        "heading": "Ways we can meet",
+        "links": [
+          {
+            "page": "services",
+            "label": "More about sessions"
+          }
+        ],
+        "entries": [
+          {
+            "heading": "Individual sessions for adults",
+            "text": "A personal space to talk about what is on your mind and explore your needs and relationships."
+          },
+          {
+            "heading": "Individual sessions for adolescents",
+            "text": "Psychological support during adolescence, with room for the thoughts, feelings and relationships that become significant during this stage of life."
+          },
+          {
+            "heading": "Couples sessions",
+            "text": "Space to discuss what is happening in your relationship and how you communicate and connect with one another."
+          }
+        ]
+      },
+      {
+        "heading": "In Piraeus and online",
+        "officeGallery": true,
+        "paragraphs": [
+          "My private practice is in Piraeus. The service area includes Athens and Korinthos, and online sessions are also available."
+        ]
+      },
+      {
+        "heading": "The first step can be a conversation",
+        "invitation": true,
+        "paragraphs": [
+          "You are welcome to contact me to discuss what you are looking for and the possibility of an initial meeting."
+        ],
+        "links": [
+          {
+            "page": "contact",
+            "label": "Contact details"
+          }
+        ]
+      }
+    ],
+    "eyebrow": "Polyxeni Petta · Psychologist"
+  }
+}

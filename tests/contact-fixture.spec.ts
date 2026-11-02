@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
 
 for (const language of [
-  { route: '/contact/', address: 'ΔΟΚΙΜΗ — Οδός Παραδείγματος 1, Αθήνα', hours: 'ΔΟΚΙΜΗ — Δευτέρα 09:00–10:00', directions: 'Οδηγίες για το γραφείο στην Αθήνα στο Google Maps (εξωτερικός σύνδεσμος)' },
-  { route: '/en/contact/', address: 'TEST FIXTURE — 1 Example Street, Athens', hours: 'TEST FIXTURE — Monday 09:00–10:00', directions: 'Directions to the Athens office on Google Maps (external link)' },
+  { route: '/contact/', address: 'ΔΟΚΙΜΗ — Οδός Παραδείγματος 1, Αθήνα', hours: 'ΔΟΚΙΜΗ — Δευτέρα 09:00–10:00', directions: 'Δείτε το γραφείο στο Google Maps' },
+  { route: '/en/contact/', address: 'TEST FIXTURE — 1 Example Street, Athens', hours: 'TEST FIXTURE — Monday 09:00–10:00', directions: 'Find the office on Google Maps' },
 ]) {
   test(`${language.route}: supplied details produce usable links and localized office information`, async ({ page, baseURL }, testInfo) => {
     await page.goto(`${baseURL}${language.route}`);

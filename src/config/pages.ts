@@ -2,6 +2,7 @@ import { home } from '../content/home';
 import { biography } from '../content/biography';
 import { services } from '../content/services';
 import { contact } from '../content/contact';
+import { interfaceText } from './interface';
 
 export const languages = ['el', 'en'] as const;
 export type Language = (typeof languages)[number];
@@ -10,30 +11,30 @@ export type Language = (typeof languages)[number];
 export const pages = [
   {
     id: 'home',
-    template: 'home',
+    template: 'content',
     routes: { el: '', en: 'en' },
-    labels: { el: 'Αρχική', en: 'Home' },
+    labels: { el: interfaceText.el.pages.home, en: interfaceText.en.pages.home },
     content: home,
   },
   {
     id: 'biography',
     template: 'content',
     routes: { el: 'bio', en: 'en/bio' },
-    labels: { el: 'Βιογραφικό', en: 'Biography' },
+    labels: { el: interfaceText.el.pages.biography, en: interfaceText.en.pages.biography },
     content: biography,
   },
   {
     id: 'services',
     template: 'content',
     routes: { el: 'services', en: 'en/services' },
-    labels: { el: 'Υπηρεσίες', en: 'Services' },
+    labels: { el: interfaceText.el.pages.services, en: interfaceText.en.pages.services },
     content: services,
   },
   {
     id: 'contact',
     template: 'contact',
     routes: { el: 'contact', en: 'en/contact' },
-    labels: { el: 'Επικοινωνία', en: 'Contact' },
+    labels: { el: interfaceText.el.pages.contact, en: interfaceText.en.pages.contact },
     content: contact,
   },
 ] as const;

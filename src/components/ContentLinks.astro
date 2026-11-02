@@ -1,0 +1,14 @@
+---
+import { pages, pageUrl, type Language } from '../config/pages';
+import type { ContentLink } from '../content/page';
+interface Props { links?: ContentLink[]; language: Language }
+const { links = [], language } = Astro.props;
+const resolved = links.map((link) => {
+  const page = pages.find((page) => page.id === link.page);
+  if (!page) throw new Error(`Unknown content link page: ${link.page}`);
+  return { label: link.label, href: pageUrl(page, language) };
+});
+---
+{resolved.length > 0 && <div class="content-links">
+  {resolved.map((link) => <a href={link.href}>{link.label}<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></a>)}
+</div>}

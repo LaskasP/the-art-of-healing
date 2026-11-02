@@ -1,0 +1,53 @@
+{
+  "cssSource": "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400..600&family=Noto+Serif:wght@400&display=swap",
+  "files": [
+    {
+      "file": "noto-sans-greek-ext.woff2",
+      "source": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aLdu2ui.woff2",
+      "bytes": 10760,
+      "sha256": "790b255c10c32e0b10bdcd961abad098c9697b7ffbabc1b09aca0b17af3201fd"
+    },
+    {
+      "file": "noto-sans-greek.woff2",
+      "source": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a3du2ui.woff2",
+      "bytes": 21776,
+      "sha256": "7f655207c2f6c140c327d6bd263bccc7a11833084f4fb0c51d9a24b7cd753651"
+    },
+    {
+      "file": "noto-sans-latin-ext.woff2",
+      "source": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aDdu2ui.woff2",
+      "bytes": 167960,
+      "sha256": "6d5a79315528df191b9d86f97b0c4272a8b588fcb166773fe6588ac795de0613"
+    },
+    {
+      "file": "noto-sans-latin.woff2",
+      "source": "https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7duw.woff2",
+      "bytes": 35820,
+      "sha256": "51ca196f49a33e79e7870ff88ebd2829a3f627a51e7d690986618f0e7ad2b52d"
+    },
+    {
+      "file": "noto-serif-greek-ext.woff2",
+      "source": "https://fonts.gstatic.com/s/notoserif/v33/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFCTy8cKtq8.woff2",
+      "bytes": 5500,
+      "sha256": "82791822ba505972b0be62837a4875a07547859f0f66189572372c05614fda66"
+    },
+    {
+      "file": "noto-serif-greek.woff2",
+      "source": "https://fonts.gstatic.com/s/notoserif/v33/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFCTxMcKtq8.woff2",
+      "bytes": 9368,
+      "sha256": "4f87b0a2fc2f0a9ce734414bb54edb9bb3e9f0143c4d17e3879881adf8058cfa"
+    },
+    {
+      "file": "noto-serif-latin-ext.woff2",
+      "source": "https://fonts.gstatic.com/s/notoserif/v33/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFCTyccKtq8.woff2",
+      "bytes": 60236,
+      "sha256": "536857e8de0e3b12176fefbf1233a294c7dece1f2f4d018d26cb386a8de75cd0"
+    },
+    {
+      "file": "noto-serif-latin.woff2",
+      "source": "https://fonts.gstatic.com/s/notoserif/v33/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFCTx8cK.woff2",
+      "bytes": 14400,
+      "sha256": "4c0cbe3eec50d260754d681c17ee2af49a43d7fd93ce42877f665fcb1a889b87"
+    }
+  ]
+}

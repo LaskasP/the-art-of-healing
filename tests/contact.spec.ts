@@ -1,21 +1,26 @@
 import { expect, test } from '@playwright/test';
+import copy from '../src/content/contact.json' with { type: 'json' };
 
 for (const language of [
-  { lang: 'el', route: '/contact/', alternate: '/en/contact/', name: 'Επικοινωνία', home: 'Αρχική', switchName: 'Read this page in English', missing: 'Δεν έχει δοθεί ακόμη', labels: ['Τηλέφωνο', 'Email', 'Γραφείο στην Αθήνα', 'Ώρες λειτουργίας', 'Οδηγίες μετάβασης'], geography: 'Η Αθήνα είναι η μοναδική τοποθεσία φυσικού γραφείου. Η περιοχή εξυπηρέτησης περιλαμβάνει την Αθήνα και την Κόρινθο. Υπάρχει επίσης δυνατότητα διαδικτυακών συνεδριών.' },
-  { lang: 'en', route: '/en/contact/', alternate: '/contact/', name: 'Contact', home: 'Home', switchName: 'Διαβάστε αυτή τη σελίδα στα Ελληνικά', missing: 'Not yet supplied', labels: ['Telephone', 'Email', 'Athens office', 'Working hours', 'Directions'], geography: 'Athens is the sole physical office location. The service area includes Athens and Korinthos. Online sessions are also available.' },
-]) {
-  test(`${language.lang}: Contact opens directly, marks missing details and switches to its equivalent`, async ({ page, baseURL }, testInfo) => {
+  { lang: 'el', route: '/contact/', alternate: '/en/contact/', name: 'Επικοινωνία', home: 'Αρχική', switchName: 'Read this page in English', address: 'Σκυλίτση 8, Πειραιάς 18532, 2ος όροφος', hours: 'Δευτέρα–Παρασκευή, 09:00–17:00', sessions: 'Ελληνικά και Αγγλικά.' },
+  { lang: 'en', route: '/en/contact/', alternate: '/contact/', name: 'Contact', home: 'Home', switchName: 'Διαβάστε αυτή τη σελίδα στα Ελληνικά', address: '8 Skylitsi Street, Piraeus 18532, 2nd floor', hours: 'Monday–Friday, 09:00–17:00', sessions: 'Greek and English.' },
+] as const) {
+  test(`${language.lang}: Contact supplies verified details and switches to its equivalent`, async ({ page, baseURL }, testInfo) => {
     const response = await page.goto(`${baseURL}${language.route}`);
     expect(response?.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', language.lang);
-    await expect(page).toHaveTitle(new RegExp(`^${language.name} \\|`));
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /.+/);
+    await expect(page).toHaveTitle(copy[language.lang].title);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText(language.name);
-    for (const label of language.labels) await expect(page.getByRole('term').filter({ hasText: label })).toBeVisible();
-    await expect(page.getByRole('definition')).toHaveText(Array(5).fill(language.missing));
-    await expect(page.getByText(language.geography)).toBeVisible();
-    await expect(page.locator('a[href^="tel:"], a[href^="mailto:"], main a[href*="google.com/maps"], iframe, form')).toHaveCount(0);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(copy[language.lang].heading);
+    await expect(page.getByRole('definition')).toHaveCount(6);
+    await expect(page.locator('main address')).toHaveText(language.address);
+    await expect(page.getByRole('definition').filter({ hasText: language.hours })).toBeVisible();
+    await expect(page.getByRole('definition').filter({ hasText: language.sessions })).toBeVisible();
+    await expect(page.locator('a[href^="tel:"]')).toHaveAttribute('href', 'tel:+306980337500');
+    await expect(page.locator('a[href^="mailto:"]')).toHaveAttribute('href', 'mailto:xenpett@gmail.com');
+    await expect(page.getByRole('link', { name: copy[language.lang].directionsLink })).toHaveAttribute('href', 'https://maps.app.goo.gl/V2SGa18JEkdT6bgG8');
+    await expect(page.locator('main')).not.toContainText(/Athens office|γραφείο στην Αθήνα|Not yet supplied|Δεν έχει δοθεί ακόμη/);
+    await expect(page.locator('iframe, form')).toHaveCount(0);
     await page.screenshot({ path: testInfo.outputPath('contact-desktop.png'), fullPage: true });
     const navigation = page.getByRole('navigation');
     await expect(navigation.getByRole('link', { name: language.name, exact: true })).toHaveAttribute('aria-current', 'page');
@@ -23,7 +28,6 @@ for (const language of [
     await page.getByRole('navigation').getByRole('link', { name: language.name, exact: true }).click();
     await expect(page).toHaveURL(`${baseURL}${language.route}`);
     await page.setViewportSize({ width: 375, height: 812 });
-    await expect(page.getByRole('link', { name: language.switchName })).toBeVisible();
     await page.screenshot({ path: testInfo.outputPath('contact-mobile.png'), fullPage: true });
     await page.setViewportSize({ width: 320, height: 700 });
     await page.addStyleTag({ content: 'html { font-size: 200%; }' });

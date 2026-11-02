@@ -1,14 +1,19 @@
 import { expect, test } from '@playwright/test';
 
+import home from '../src/content/home.json' with { type: 'json' };
+import biography from '../src/content/biography.json' with { type: 'json' };
+import services from '../src/content/services.json' with { type: 'json' };
+import contact from '../src/content/contact.json' with { type: 'json' };
+
 const routes = [
-  { route: '/', alternate: '/en/', lang: 'el', title: 'Αρχική', description: 'Δομικό δείγμα ιστοσελίδας ενός ψυχολόγου: γραφείο στην Αθήνα, εξυπηρέτηση Αθήνας και Κορίνθου και διαδικτυακές συνεδρίες.' },
-  { route: '/en/', alternate: '/', lang: 'en', title: 'Home', description: 'A structural demonstration for one psychologist: an Athens office, a service area covering Athens and Korinthos, and online sessions.' },
-  { route: '/bio/', alternate: '/en/bio/', lang: 'el', title: 'Βιογραφικό', description: 'Προσωρινή σελίδα βιογραφικού. Το εγκεκριμένο βιογραφικό του ψυχολόγου θα προστεθεί αργότερα.' },
-  { route: '/en/bio/', alternate: '/bio/', lang: 'en', title: 'Biography', description: 'A placeholder biography page. The psychologist’s approved biography will be added later.' },
-  { route: '/services/', alternate: '/en/services/', lang: 'el', title: 'Υπηρεσίες', description: 'Η σελίδα υπηρεσιών είναι υπό διαμόρφωση. Οι εγκεκριμένες πληροφορίες θα προστεθούν αργότερα.' },
-  { route: '/en/services/', alternate: '/services/', lang: 'en', title: 'Services', description: 'The Services page is under construction. Approved information will be added later.' },
-  { route: '/contact/', alternate: '/en/contact/', lang: 'el', title: 'Επικοινωνία', description: 'Σελίδα επικοινωνίας για το γραφείο στην Αθήνα. Τα επιβεβαιωμένα στοιχεία επικοινωνίας θα προστεθούν όταν δοθούν.' },
-  { route: '/en/contact/', alternate: '/contact/', lang: 'en', title: 'Contact', description: 'Contact page for the Athens office. Verified contact details will be added when supplied.' },
+  { route: '/', alternate: '/en/', lang: 'el', ...home.el },
+  { route: '/en/', alternate: '/', lang: 'en', ...home.en },
+  { route: '/bio/', alternate: '/en/bio/', lang: 'el', ...biography.el },
+  { route: '/en/bio/', alternate: '/bio/', lang: 'en', ...biography.en },
+  { route: '/services/', alternate: '/en/services/', lang: 'el', ...services.el },
+  { route: '/en/services/', alternate: '/services/', lang: 'en', ...services.en },
+  { route: '/contact/', alternate: '/en/contact/', lang: 'el', ...contact.el },
+  { route: '/en/contact/', alternate: '/contact/', lang: 'en', ...contact.en },
 ];
 
 for (const entry of routes) {
@@ -20,7 +25,7 @@ for (const entry of routes) {
     await page.goto(`${baseURL}${entry.route}`);
     const publicBase = `${testInfo.project.metadata.publicOrigin ?? 'https://laskasp.github.io'}${new URL(baseURL!).pathname.replace(/\/$/, '')}`;
     await expect(page.locator('html')).toHaveAttribute('lang', entry.lang);
-    await expect(page).toHaveTitle(`${entry.title} | ${entry.lang === 'el' ? 'Η τέχνη της ίασης — Δομικό δείγμα' : 'The art of healing — Structural demonstration'}`);
+    await expect(page).toHaveTitle(entry.title);
     await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', entry.description);
     await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${publicBase}${entry.route}`);

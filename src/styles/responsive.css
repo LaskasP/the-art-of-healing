@@ -1,18 +1,56 @@
+﻿@media (min-width: 48rem) and (max-width: 67rem) {
+  .brand-wordmark { display: none; }
+  .site-header { gap: 1.5rem; }
+  .hero-split { gap: 2rem; }
+  .content-entry { padding: 1.5rem; }
+}
+
 @media (max-width: 47.99rem) {
-  .site-header { padding: 1.5rem 1rem 0; }
-  .brand { margin-bottom: 1.5rem; }
-  .navigation-bar { grid-template-columns: 1fr auto; gap: 0.75rem; }
+  .site-header { display: block; padding-top: 1rem; padding-bottom: 1rem; }
+  .brand { gap: 0.85rem; width: fit-content; margin-bottom: 1rem; }
+  .brand-logo { width: 4rem; height: 4rem; }
+  .brand-wordmark > span { font-size: 1.2rem; }
+  .brand-wordmark small { font-size: 0.7rem; }
+  .navigation-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.75rem; }
   .menu-toggle { grid-column: 1; grid-row: 1; justify-self: start; }
-  .language-switch { grid-column: 2; grid-row: 1; }
+  /* Match the closed menu before its deferred controller loads; preserve the no-JS links. */
+  .has-js .menu-toggle { display: inline-flex; }
+  .has-js .menu-toggle[aria-expanded="false"] + nav { display: none; }
+  .language-switch { grid-column: 2; grid-row: 1; padding: 0.5rem 0 0.5rem 1rem; }
   nav { grid-column: 1 / -1; grid-row: 2; }
-  nav ul { flex-direction: column; align-items: stretch; gap: 0.25rem; }
-  nav a { display: block; padding: 0.6rem; }
-  main { width: calc(100% - 2rem); }
-  .hero { padding: 3rem 0 2.5rem; }
-  .introduction { font-size: 1.1rem; }
-  .notice { padding: 1.25rem; }
-  .service-area { padding: 2.5rem 0; }
-  .content-page { padding-bottom: 2.5rem; }
-  .contact-details > div { grid-template-columns: 1fr; gap: 0.5rem; }
-  .area-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  nav ul { flex-direction: column; align-items: stretch; gap: 0.25rem; border-top: 1px solid var(--color-border); padding-top: 0.75rem; }
+  nav a { display: block; padding: 0.65rem 0.5rem; }
+  nav a::after { inset-inline: 0.5rem; }
+  .hero { padding: 2.75rem 0 2.5rem; }
+  .hero-split { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  h1 { font-size: clamp(2.6rem, 9vw, 3.8rem); max-width: 18ch; }
+  .eyebrow { margin-bottom: 1.25rem; }
+  .introduction { font-size: 1rem; margin-top: 1.5rem; }
+  .hero-image { margin-right: 0.5rem; padding-bottom: 0; }
+  .hero-image img, .page-services .hero-image img, .page-contact .hero-image img { height: 25rem; max-height: 115vw; border-top-right-radius: 4rem; }
+  .hero-image::before { right: -0.5rem; bottom: 2.5rem; }
+  .hero-image figcaption { font-size: 0.7rem; }
+  .hero-continuation { grid-template-columns: auto minmax(0, 1fr); gap: 1rem; padding: 1rem 0 3rem; }
+  .section-marker { font-size: 2rem; }
+  .copy-section { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding: 2.75rem 0; }
+  .section-heading h2 { max-width: 25ch; }
+  .section-number { margin-bottom: 0.75rem; }
+  .section-entries .section-heading { margin-bottom: 1.75rem; }
+  .content-entries { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .content-entry { padding: 1.75rem; }
+  .entry-mark { margin-bottom: 1.25rem; }
+  .office-gallery { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 0.75rem; margin-top: 0.5rem; }
+  .office-gallery img { height: 17rem; }
+  .office-gallery img:last-child { height: 12rem; border-top-right-radius: 2rem; }
+  .section-invitation { padding: 2rem 1.5rem; margin-top: 1rem; border-top-right-radius: 3rem; }
+  .content-links { gap: 0.75rem 1.5rem; }
+  .content-links a { gap: 1rem; }
+  .portrait-panel { min-height: 25rem; padding: 3rem 1.5rem; border-top-left-radius: 5rem; }
+  .content-page { padding-bottom: 3rem; }
+  .contact-panel { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding: 1.5rem; }
+  .contact-details > div { grid-template-columns: minmax(0, 1fr); gap: 0.4rem; }
+  .notice { padding: 1.75rem 1.5rem; }
+  .footer-inner { grid-template-columns: minmax(0, 1fr) auto; gap: 1.5rem; }
+  .site-footer p { grid-column: 1; grid-row: 2; }
+  .footer-mark { grid-column: 2; grid-row: 1; }
 }

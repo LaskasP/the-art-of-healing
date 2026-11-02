@@ -2,22 +2,36 @@
 import { contact } from '../content/contact';
 import { site } from '../config/site';
 import type { Language } from '../config/pages';
+import { Image } from 'astro:assets';
+import office from '../../assets/photos/office/office-table.jpeg';
+import { interfaceText } from '../config/interface';
 interface Props { content: (typeof contact)['el'] | (typeof contact)['en']; language: Language }
 const { content, language } = Astro.props;
 const details = site.contact;
 ---
-<article class="content-page">
-  <header class="hero">
-    <h1>{content.heading}</h1>
-    <p class="introduction">{content.introduction}</p>
+<article class="content-page page-contact">
+  <header class="hero hero-split">
+    <div class="hero-copy">
+      <p class="eyebrow">{interfaceText[language].pages.contact}</p>
+      <h1>{content.heading}</h1>
+      <p class="introduction">{content.introduction}</p>
+    </div>
+    <figure class="hero-image">
+      <Image src={office} alt={interfaceText[language].images.officeDetail} widths={[480, 800, 1200]} sizes="(max-width: 767px) calc(100vw - 40px), 46vw" width={800} loading="eager" fetchpriority="high" />
+      <figcaption>{content.geographyHeading}</figcaption>
+    </figure>
   </header>
+  <div class="contact-panel">
+  <div class="professional-details"><p>{content.name}</p><p>{content.qualification}</p></div>
   <dl class="contact-details">
     <div><dt>{content.telephone}</dt><dd>{details.telephone ? <a href={`tel:${details.telephone}`}>{details.telephone}</a> : content.missing}</dd></div>
     <div><dt>{content.email}</dt><dd>{details.email ? <a href={`mailto:${details.email}`}>{details.email}</a> : content.missing}</dd></div>
     <div><dt>{content.address}</dt><dd>{details.address?.[language] ? <address>{details.address[language]}</address> : content.missing}</dd></div>
     <div><dt>{content.workingHours}</dt><dd>{details.workingHours?.[language] || content.missing}</dd></div>
     <div><dt>{content.directions}</dt><dd>{details.directionsUrl ? <a href={details.directionsUrl}>{content.directionsLink}</a> : content.missing}</dd></div>
+    <div><dt>{content.sessionLanguagesLabel}</dt><dd>{content.sessionLanguages}</dd></div>
   </dl>
+  </div>
   <section class="notice">
     <h2>{content.geographyHeading}</h2>
     <p>{content.geography}</p>

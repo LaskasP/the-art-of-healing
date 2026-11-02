@@ -1,3 +1,5 @@
+import details from '../content/contact-details.json';
+
 export interface ContactDetails {
   telephone: string | null;
   email: string | null;
@@ -6,11 +8,5 @@ export interface ContactDetails {
   directionsUrl: string | null;
 }
 
-// Supply verified values only. Null means the detail has not yet been supplied.
-export const contact: ContactDetails = {
-  telephone: null,
-  email: null,
-  address: null,
-  workingHours: null,
-  directionsUrl: null,
-};
+// Public practice details are edited in the content file, not application code.
+export const contact: ContactDetails = details;

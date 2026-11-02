@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "check": "astro check",
     "build": "astro build",
+    "check:deployment": "node scripts/check-deployment.mjs",
     "preview": "astro preview",
     "test": "playwright test",
     "validate": "npm run check && npm test"

@@ -26,6 +26,9 @@ A session with the psychologist conducted remotely.
 **Website language**:
 A language in which the website's information is published: Greek or English. This does not establish which languages are offered for clinical sessions.
 
+**Session language**:
+A language in which the psychologist offers clinical sessions. Greek and English are both offered, as confirmed by the user.
+
 **Contact page**:
 The page presenting the practice's telephone, email, address, and working hours so a visitor can make contact.
 _Avoid_: Booking page, enquiry form.

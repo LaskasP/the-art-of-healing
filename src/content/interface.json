@@ -1,0 +1,40 @@
+{
+  "el": {
+    "brand": "The art of healing",
+    "navigation": "Κύρια πλοήγηση",
+    "menu": "Μενού",
+    "skip": "Μετάβαση στο περιεχόμενο",
+    "switchLanguage": "Read this page in English",
+    "footer": "Πολυξένη Πέττα · Ψυχολόγος. Γραφείο στον Πειραιά · Εξυπηρέτηση Αθήνας και Κορίνθου · Διαδικτυακές συνεδρίες.",
+    "languageName": "Ελληνικά",
+    "pages": {
+      "home": "Αρχική",
+      "biography": "Βιογραφικό",
+      "services": "Υπηρεσίες",
+      "contact": "Επικοινωνία"
+    },
+    "images": {
+      "office": "Ο χώρος συνεδριών με καναπέ και πολυθρόνα στο γραφείο στον Πειραιά",
+      "officeDetail": "Το γραφείο στον Πειραιά, με φυσικό φως και ξύλινες λεπτομέρειες"
+    }
+  },
+  "en": {
+    "brand": "The art of healing",
+    "navigation": "Main navigation",
+    "menu": "Menu",
+    "skip": "Skip to content",
+    "switchLanguage": "Διαβάστε αυτή τη σελίδα στα Ελληνικά",
+    "footer": "Polyxeni Petta · Psychologist. Private practice in Piraeus · Serving Athens and Korinthos · Online sessions.",
+    "languageName": "English",
+    "pages": {
+      "home": "Home",
+      "biography": "Biography",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "images": {
+      "office": "The session room with a sofa and armchair at the Piraeus practice",
+      "officeDetail": "The Piraeus office with natural light and wooden details"
+    }
+  }
+}

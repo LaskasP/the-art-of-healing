@@ -1,5 +1,5 @@
 import type { SitePage } from './pages';
 
 // Approve a page identity only after BOTH languages have final, verified content.
-// All current pages contain placeholders. Unfinished Services must stay omitted.
+// Copy is integrated; retain the existing publication gate until launch review.
 export const readyPages: readonly SitePage['id'][] = [];

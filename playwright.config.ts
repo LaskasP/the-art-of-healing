@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// Each server builds its own static artifact. No development server is tested.
+// Acceptance checks use isolated static builds; first-paint checks also exercise development.
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -8,14 +8,25 @@ export default defineConfig({
   retries: 0,
   use: { ...devices['Desktop Chrome'], trace: 'retain-on-failure' },
   projects: [
-    { name: 'domain-root', testIgnore: '**/contact-fixture.spec.ts', use: { baseURL: 'http://127.0.0.1:4321' } },
-    { name: 'repository-base', testIgnore: '**/contact-fixture.spec.ts', use: { baseURL: 'http://127.0.0.1:4322/the-art-of-healing' } },
+    { name: 'domain-root', testIgnore: ['**/contact-fixture.spec.ts', '**/navigation-paint.spec.ts'], use: { baseURL: 'http://127.0.0.1:4321' } },
+    { name: 'repository-base', testIgnore: ['**/contact-fixture.spec.ts', '**/navigation-paint.spec.ts'], use: { baseURL: 'http://127.0.0.1:4322/the-art-of-healing' } },
+    { name: 'development-root', testMatch: '**/navigation-paint.spec.ts', use: { baseURL: 'http://127.0.0.1:4331' } },
+    { name: 'development-repository', testMatch: '**/navigation-paint.spec.ts', use: { baseURL: 'http://127.0.0.1:4332/the-art-of-healing' } },
     { name: 'contact-fixture', testMatch: '**/contact-fixture.spec.ts', use: { baseURL: 'http://127.0.0.1:4323' } },
     { name: 'launch-root', testMatch: '**/seo.spec.ts', metadata: { publication: 'launch', publicOrigin: 'https://github.com' }, use: { baseURL: 'http://127.0.0.1:4324' } },
     { name: 'launch-repository', testMatch: '**/seo.spec.ts', metadata: { publication: 'launch' }, use: { baseURL: 'http://127.0.0.1:4325/the-art-of-healing' } },
     { name: 'demonstration-ready', testMatch: '**/seo.spec.ts', use: { baseURL: 'http://127.0.0.1:4326' } },
   ],
   webServer: [
+    ...[
+      { base: '/', port: 4331 },
+      { base: '/the-art-of-healing/', port: 4332 },
+    ].map(({ base, port }) => ({
+      command: `npm run dev -- --ignore-lock --host 127.0.0.1 --port ${port}`,
+      env: { SITE_BASE: base, SITE_PUBLICATION: 'demonstration' },
+      url: `http://127.0.0.1:${port}${base}`,
+      reuseExistingServer: false,
+    })),
     ...[
       { name: 'launch-root', base: '/', port: 4324, stage: 'launch' },
       { name: 'launch-repository', base: '/the-art-of-healing/', port: 4325, stage: 'launch' },

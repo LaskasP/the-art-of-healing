@@ -1,19 +1,60 @@
 ---
 import type { PageContent } from '../content/page';
-import underConstruction from '../assets/under-construction.svg';
-interface Props { content: PageContent }
-const { content } = Astro.props;
+import type { Language } from '../config/pages';
+import ContentLinks from './ContentLinks.astro';
+import { Image } from 'astro:assets';
+import office from '../../assets/photos/office/main-area-side.jpeg';
+import officeDetail from '../../assets/photos/office/office-table-side.jpeg';
+import portrait from '../../assets/photos/personal/490331803_1671279140156611_716667689455381191_n.jpg';
+import { interfaceText } from '../config/interface';
+import { contact } from '../content/contact';
+interface Props { content: PageContent; language: Language; pageId: 'home' | 'biography' | 'services' }
+const { content, language, pageId } = Astro.props;
+const text = interfaceText[language];
 ---
-<article class="content-page">
-  <header class="hero">
-    <h1>{content.heading}</h1>
-    <p class="introduction">{content.introduction}</p>
+<article class:list={['content-page', `page-${pageId}`]}>
+  <header class="hero hero-split">
+    <div class="hero-copy">
+      <p class="eyebrow">{content.eyebrow || text.pages[pageId]}</p>
+      <h1>{content.heading}</h1>
+      {content.paragraphs.slice(0, 1).map((paragraph) => <p class="introduction">{paragraph}</p>)}
+      <ContentLinks links={content.links} language={language} />
+    </div>
+    {pageId === 'biography' ? (
+      <figure class="portrait-panel">
+        <span class="portrait-line" aria-hidden="true"></span>
+        <Image class="portrait" src={portrait} alt={contact[language].name} width={200} height={200} loading="eager" />
+        <figcaption><span>{contact[language].name}</span><small>{text.brand}</small></figcaption>
+      </figure>
+    ) : (
+      <figure class="hero-image">
+        <Image src={pageId === 'home' ? office : officeDetail} alt={text.images[pageId === 'home' ? 'office' : 'officeDetail']} widths={[480, 800, 1200]} sizes="(max-width: 767px) calc(100vw - 40px), 46vw" width={800} loading="eager" fetchpriority="high" />
+        <figcaption>{contact[language].geographyHeading}</figcaption>
+      </figure>
+    )}
   </header>
-  {content.illustrationAlt && <img class="construction-graphic" src={underConstruction.src} width="480" height="240" alt={content.illustrationAlt} />}
-  {content.sections.map((section) => (
-    <section class="notice">
-      <h2>{section.heading}</h2>
-      <p>{section.text}</p>
+  {content.paragraphs.length > 1 && <div class="hero-continuation">
+    <span class="section-marker" aria-hidden="true">↳</span>
+    <div>{content.paragraphs.slice(1).map((paragraph) => <p>{paragraph}</p>)}</div>
+  </div>}
+  {content.sections.map((section, index) => (
+    <section class:list={['copy-section', { 'section-entries': !!section.entries, 'section-invitation': section.invitation }]}>
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+        <h2>{section.heading}</h2>
+      </div>
+      <div class="section-body">
+        {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+        {section.list && <ul class="content-list">{section.list.map((item) => <li>{item}</li>)}</ul>}
+        {section.entries && <div class="content-entries">{section.entries.map((entry, entryIndex) => (
+          <div class="content-entry"><span class="entry-mark" aria-hidden="true">{String(entryIndex + 1).padStart(2, '0')} /</span><h3>{entry.heading}</h3><p>{entry.text}</p></div>
+        ))}</div>}
+        <ContentLinks links={section.links} language={language} />
+      </div>
+      {section.officeGallery && <div class="office-gallery">
+        <Image src={officeDetail} alt={text.images.officeDetail} widths={[480, 800, 1200]} sizes="(max-width: 767px) calc(100vw - 40px), 60vw" width={1000} />
+        <Image src={office} alt={text.images.office} widths={[400, 600]} sizes="(max-width: 767px) 35vw, 30vw" width={600} />
+      </div>}
     </section>
   ))}
 </article>

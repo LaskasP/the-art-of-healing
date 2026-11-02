@@ -7,8 +7,13 @@ import favicon from '../../assets/favicon/favicon.ico?url';
 import favicon16 from '../../assets/favicon/favicon-16x16.png?url';
 import favicon32 from '../../assets/favicon/favicon-32x32.png?url';
 import appleTouchIcon from '../../assets/favicon/apple-touch-icon.png?url';
-import '../styles/main.css';
-import '../styles/responsive.css';
+import mainStyles from '../styles/main.css?url';
+import responsiveStyles from '../styles/responsive.css?url';
+import fontStyles from '../styles/fonts.css?url';
+import sansGreek from '../assets/fonts/noto-sans-greek.woff2?url';
+import sansLatin from '../assets/fonts/noto-sans-latin.woff2?url';
+import serifGreek from '../assets/fonts/noto-serif-greek.woff2?url';
+import serifLatin from '../assets/fonts/noto-serif-latin.woff2?url';
 
 interface Props { page: SitePage; language: Language; title: string; description: string }
 const { page, language, title, description } = Astro.props;
@@ -19,6 +24,12 @@ const text = interfaceText[language];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Load before first paint, including in development where CSS imports use JavaScript. -->
+    {[sansGreek, sansLatin, serifGreek, serifLatin].map(font => <link rel="preload" href={font} as="font" type="font/woff2" crossorigin="anonymous" />)}
+    <link rel="stylesheet" href={fontStyles} />
+    <link rel="stylesheet" href={mainStyles} />
+    <link rel="stylesheet" href={responsiveStyles} />
+    <script is:inline>document.documentElement.classList.add('has-js');</script>
     <link rel="icon" href={favicon} sizes="any" />
     <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
     <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
@@ -33,7 +44,7 @@ const text = interfaceText[language];
   <body>
     <a class="skip-link" href="#main">{text.skip}</a>
     <Header page={page} language={language} />
-    <main id="main" tabindex="-1"><slot /></main>
-    <footer class="site-footer"><p>{text.footer}</p></footer>
+    <main id="main"><slot /></main>
+    <footer class="site-footer"><div class="footer-inner"><span class="footer-brand">{text.brand}</span><p>{text.footer}</p><span class="footer-mark" aria-hidden="true">↗</span></div></footer>
   </body>
 </html>

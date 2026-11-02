@@ -1,0 +1,13 @@
+{
+  "telephone": "+306980337500",
+  "email": "xenpett@gmail.com",
+  "address": {
+    "el": "Σκυλίτση 8, Πειραιάς 18532, 2ος όροφος",
+    "en": "8 Skylitsi Street, Piraeus 18532, 2nd floor"
+  },
+  "workingHours": {
+    "el": "Δευτέρα–Παρασκευή, 09:00–17:00",
+    "en": "Monday–Friday, 09:00–17:00"
+  },
+  "directionsUrl": "https://maps.app.goo.gl/V2SGa18JEkdT6bgG8"
+}
