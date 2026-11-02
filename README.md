@@ -1,6 +1,6 @@
 # The art of healing
 
-A static Astro demonstration for one psychologist, with Greek Home at the deployment root and English Home at `en/`. Content and branding are explicitly provisional. The remaining page slices are tracked under [implementation specification #8](https://github.com/LaskasP/the-art-of-healing/issues/8).
+A static Astro demonstration for one psychologist, with Greek pages at the deployment root and English pages under `en/`. Home, Biography (`bio/`) and Services (`services/`) are available in both languages. Biography contains explicit placeholders; Services displays an under-construction graphic. Content and branding are provisional. The remaining slices are tracked under [implementation specification #8](https://github.com/LaskasP/the-art-of-healing/issues/8).
 
 ## Build and run locally
 
@@ -94,10 +94,17 @@ The result is HTML, CSS and a small navigation script, requiring no production a
 ## Editing and extending
 
 - `src/config/pages.ts` holds stable page identities, localized routes and navigation labels. Only implemented pages appear in navigation. The same registry drives route generation and equivalent-page language links.
-- `src/content/home.ts` contains both languages of Home copy, including titles and descriptions. Keep page copy in its bilingual content module. `src/config/interface.ts` holds shared interface wording.
+- `src/content/home.ts`, `biography.ts` and `services.ts` each contain both languages of one page, including titles and descriptions. Keep page copy in its bilingual content module. `src/config/interface.ts` holds shared interface wording.
 - `src/pages/[...path].astro` generates both localized static URLs; `src/layouts/SiteLayout.astro` and `src/components/` provide shared presentation.
 - `src/styles/main.css` begins with editable theme colors and the system-font stack, followed by base/component rules. `src/styles/responsive.css` is loaded afterward for responsive overrides. The earth-tone palette and text-only provisional logo await visual approval; no final logo asset is claimed.
 
-To add a page with the current presentation, create its bilingual content module, register its identity/routes/labels/content in `pages.ts`, and reuse the shared template. For a genuinely different structure, add a shared template and select it in the route renderer. Continue using one source per translation pair, ordinary links, verified facts, and the same browser acceptance seam. Add future page slices through the GitHub tracker; do not maintain duplicate local issue files.
+To add a normal content page:
 
-The initial Home uses text only, with no image downloads or image layout shifts. Any later meaningful images need suitable alternative text and reserved dimensions. No booking, enquiry form, embedded map or visitor analytics is included.
+1. Create `src/content/example.ts` exporting an object with `el` and `en` entries. Each entry follows `PageContent` from `src/content/page.ts`: localized `title`, `description`, `heading`, `introduction`, and `sections` (each with a `heading` and `text`). Use `satisfies Record<'el' | 'en', PageContent>` to check both translations. See Biography for an example.
+2. Add an entry in `src/config/pages.ts` with a unique `id`, `template: 'content'`, `routes: { el: 'example', en: 'en/example' }`, localized `labels`, and the imported bilingual `content`. Routes omit leading/trailing slashes and the deployment base. The registry automatically adds both static URLs, navigation links, active-page state and equivalent-page language switching.
+3. Reuse `ContentPage.astro` and `SiteLayout.astro`; no separate language templates or route files are needed. `illustrationAlt` optionally enables the existing under-construction graphic with a localized alternative (as used by Services). Introduce a new shared template only for a genuinely different structure, select it in the route renderer, and reuse it across languages. Home keeps its own presentation.
+4. Run `npm run check` and extend the browser acceptance suite to open both new URLs, navigate and switch languages at both deployment bases. Run `npm test` and inspect mobile/desktop presentation before committing.
+
+Continue using one source per translation pair, ordinary links, verified facts, and the same browser acceptance seam. Add future page slices through the GitHub tracker; do not maintain duplicate local issue files.
+
+Home and Biography use text only. Services imports a small SVG construction graphic, with localized alternative text and reserved dimensions; Astro generates its base-aware asset URL. Future meaningful images also need suitable alternative text and reserved dimensions. No booking, enquiry form, embedded map or visitor analytics is included.

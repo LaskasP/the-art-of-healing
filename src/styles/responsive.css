@@ -13,5 +13,6 @@
   .introduction { font-size: 1.1rem; }
   .notice { padding: 1.25rem; }
   .service-area { padding: 2.5rem 0; }
+  .content-page { padding-bottom: 2.5rem; }
   .area-grid { grid-template-columns: 1fr; gap: 1.75rem; }
 }

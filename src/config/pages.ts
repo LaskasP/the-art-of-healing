@@ -1,4 +1,6 @@
 import { home } from '../content/home';
+import { biography } from '../content/biography';
+import { services } from '../content/services';
 
 export const languages = ['el', 'en'] as const;
 export type Language = (typeof languages)[number];
@@ -7,9 +9,24 @@ export type Language = (typeof languages)[number];
 export const pages = [
   {
     id: 'home',
+    template: 'home',
     routes: { el: '', en: 'en' },
     labels: { el: 'Αρχική', en: 'Home' },
     content: home,
+  },
+  {
+    id: 'biography',
+    template: 'content',
+    routes: { el: 'bio', en: 'en/bio' },
+    labels: { el: 'Βιογραφικό', en: 'Biography' },
+    content: biography,
+  },
+  {
+    id: 'services',
+    template: 'content',
+    routes: { el: 'services', en: 'en/services' },
+    labels: { el: 'Υπηρεσίες', en: 'Services' },
+    content: services,
   },
 ] as const;
 export type SitePage = (typeof pages)[number];

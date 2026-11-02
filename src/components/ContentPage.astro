@@ -1,0 +1,19 @@
+---
+import type { PageContent } from '../content/page';
+import underConstruction from '../assets/under-construction.svg';
+interface Props { content: PageContent }
+const { content } = Astro.props;
+---
+<article class="content-page">
+  <header class="hero">
+    <h1>{content.heading}</h1>
+    <p class="introduction">{content.introduction}</p>
+  </header>
+  {content.illustrationAlt && <img class="construction-graphic" src={underConstruction.src} width="480" height="240" alt={content.illustrationAlt} />}
+  {content.sections.map((section) => (
+    <section class="notice">
+      <h2>{section.heading}</h2>
+      <p>{section.text}</p>
+    </section>
+  ))}
+</article>
