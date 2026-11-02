@@ -61,9 +61,11 @@ npm run validate
 | `npm test` | Build and run browser acceptance checks at both deployment bases |
 | `npm run validate` | Typecheck, then run the acceptance suite |
 
-The Playwright suite starts production preview servers on ports 4321, 4322 and 4323. Stop local development/preview servers using those ports first. Its normal builds live in `dist/root/` and `dist/repository/`. A separate Contact fixture build lives in `.test-build/contact/`, outside the publishable `dist/` directory. The fixture builder copies sources into an OS temporary directory, substitutes only that copy's contact settings, builds, and removes the temporary copy. It never modifies production sources. Tests verify that fixture contact values are absent from both normal demonstration builds. Never publish `.test-build/`.
+The Playwright suite starts production preview servers on ports 4321–4326. Stop local development/preview servers using those ports first. Its normal builds live in `dist/root/` and `dist/repository/`. A separate Contact fixture build lives in `.test-build/contact/`, outside the publishable `dist/` directory. Publication fixtures in `.test-build/launch-root/`, `.test-build/launch-repository/` and `.test-build/demonstration-ready/` test approved-page behavior in both hosting configurations and confirm that demonstration mode excludes even ready pages. Fixture builders copy sources into an OS temporary directory, substitute settings only in that copy, build, and remove the copy. They never modify production sources. Tests verify that fixture contact values are absent from both normal demonstration builds. Never publish `.test-build/`.
 
 Run focused checks with `npx playwright test tests/contact.spec.ts` or `npx playwright test tests/contact-fixture.spec.ts --project contact-fixture`. For mobile menu checks, use `npx playwright test tests/home.spec.ts --project repository-base --grep "mobile menu"`. A failed test retains a trace in `test-results/`; layout tests also save desktop/mobile screenshots there for visual review.
+
+Run `npx playwright test tests/seo.spec.ts` to check every available route's localized metadata, canonical URLs, indexing, equivalent-page links, loaded assets, crawlability and sitemap across demonstration and launch fixtures. The tests exercise generated artifacts and browser behavior, using explicitly isolated readiness settings; they do not approve the actual placeholder content. Test servers explicitly set their publication mode, regardless of the calling shell's environment.
 
 The tests use only the delivered website: direct language routes, navigation, switching, mobile keyboard/menu behavior, metadata, crawling, loaded assets, narrow-screen reflow, and navigation without JavaScript. Supplement automation with visual review of both languages, keyboard focus, contrast, and browser zoom. Automated checks do not establish WCAG conformance.
 
@@ -75,6 +77,7 @@ The tests use only the delivered website: direct language routes, navigation, sw
 | --- | --- | --- |
 | `SITE_ORIGIN` | `https://laskasp.github.io` | Your eventual verified HTTPS origin |
 | `SITE_BASE` | `/the-art-of-healing/` | `/` |
+| `SITE_PUBLICATION` | `demonstration` | `demonstration` until public launch is approved |
 
 For a local root-path build in PowerShell:
 
@@ -86,9 +89,37 @@ npm run preview
 Remove-Item Env:SITE_BASE
 ```
 
-Set `SITE_ORIGIN` to the real domain origin when it becomes available. It must have no path, query or fragment; `SITE_BASE` supplies the path. Restart development or rebuild after changing settings. These variables come from the shell/CI environment, not a committed `.env` file. Asset imports use Astro's base-aware build output; ordinary page links use the configured base through the shared registry helper.
+Set `SITE_ORIGIN` to the real domain origin when it becomes available. It must have no path, credentials, query or fragment; `SITE_BASE` supplies the path. Reserved placeholder domains (including example.com, .example, .invalid and .test) and localhost/loopback origins are rejected so SEO artifacts cannot accidentally advertise those destinations. Local development and preview still work: the page is served locally while its canonical URL uses the configured public origin. Restart development or rebuild after changing settings. These variables come from the shell/CI environment, not a committed `.env` file. Asset imports use Astro's base-aware build output; ordinary page links use the configured base through the shared registry helper.
 
-The result is HTML, CSS and a small navigation script, requiring no production application backend. GitHub Pages remains the intended host. Automated deployment, canonical/alternate metadata, sitemap generation and public-launch indexing controls belong to subsequent slices of #8. No deployment or public launch is performed by this slice. All demonstration pages currently emit `noindex, follow`; `robots.txt` permits crawling so that exclusion can be read. Keep this state until the later launch policy and approved content are ready. Do not enable indexing simply to publish a demonstration.
+The result is HTML, CSS and a small navigation script, requiring no production application backend. GitHub Pages remains the intended host; automated deployment is a subsequent slice of #8. No deployment or public launch is performed by this slice.
+
+### Publication and search artifacts
+
+Two controls determine indexing together:
+
+- `SITE_PUBLICATION` accepts only `demonstration` (the default) or `launch`. An unrecognized value fails the build. Publishing a demonstration never changes this setting automatically.
+- `src/config/readiness.ts` lists page identities whose **Greek and English content are both final, verified and approved**. The list is currently empty because every page still contains provisional material. A page omitted from the list stays `noindex` even in launch mode. Keep `services` omitted while its under-construction state remains.
+
+| Mode | Ready page | Unready page, including unfinished Services |
+| --- | --- | --- |
+| Demonstration | `noindex, follow` | `noindex, follow` |
+| Launch | `index, follow` | `noindex, follow` |
+
+All pages have a self-canonical URL derived from the configured origin/base and common route registry. Only indexable translated pairs receive reciprocal `el`/`en` hreflang links. `/sitemap.xml`, relative to `SITE_BASE`, contains only indexable canonical URLs; it has no URL entries in demonstration mode or when no pages are ready. For the default project path its location is `https://laskasp.github.io/the-art-of-healing/sitemap.xml`. `robots.txt` allows crawling in both modes so crawlers can read `noindex`; search exclusion is not access control.
+
+When public launch is approved, first supply final content and verified practice details, review both translations and visual presentation, and list only completed page identities in `readyPages`. Set the actual public origin/base, explicitly set `SITE_PUBLICATION=launch` in the build environment, rebuild, and inspect the resulting metadata and sitemap before publication. A local policy check in PowerShell is:
+
+```powershell
+$env:SITE_PUBLICATION = 'launch'
+npm run build
+# With the current empty readiness list, every page still remains noindex.
+Remove-Item Env:SITE_PUBLICATION
+npm run build
+```
+
+Do not approve placeholder pages to test launch behavior: the browser suite supplies its own isolated readiness fixture. Adding a new registry page leaves it excluded from indexing until both controls permit it. When final content replaces placeholders, update the acceptance tests' expected localized metadata as part of that content change.
+
+Custom-domain purchase/provisioning, DNS changes, final content/visual approval and Search Console verification on the final domain remain later work. Domain configuration and Search Console verification do not themselves override `noindex`. No visitor analytics or unverified business/professional structured data is generated.
 
 ## Editing and extending
 

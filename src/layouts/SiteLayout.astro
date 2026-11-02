@@ -1,6 +1,6 @@
 ---
-import { type Language, type SitePage } from '../config/pages';
-import { site } from '../config/site';
+import { languages, type Language, type SitePage } from '../config/pages';
+import { canonicalUrl, isIndexable } from '../config/seo';
 import { interfaceText } from '../config/interface';
 import Header from '../components/Header.astro';
 import '../styles/main.css';
@@ -17,7 +17,9 @@ const text = interfaceText[language];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={site.publication.robots} />
+    <meta name="robots" content={isIndexable(page) ? 'index, follow' : 'noindex, follow'} />
+    <link rel="canonical" href={canonicalUrl(page, language)} />
+    {isIndexable(page) && languages.map((alternate) => <link rel="alternate" hreflang={alternate} href={canonicalUrl(page, alternate)} />)}
   </head>
   <body>
     <a class="skip-link" href="#main">{text.skip}</a>
