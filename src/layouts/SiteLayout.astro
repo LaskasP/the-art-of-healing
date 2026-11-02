@@ -3,6 +3,10 @@ import { languages, type Language, type SitePage } from '../config/pages';
 import { canonicalUrl, isIndexable } from '../config/seo';
 import { interfaceText } from '../config/interface';
 import Header from '../components/Header.astro';
+import favicon from '../../assets/favicon/favicon.ico?url';
+import favicon16 from '../../assets/favicon/favicon-16x16.png?url';
+import favicon32 from '../../assets/favicon/favicon-32x32.png?url';
+import appleTouchIcon from '../../assets/favicon/apple-touch-icon.png?url';
 import '../styles/main.css';
 import '../styles/responsive.css';
 
@@ -15,6 +19,11 @@ const text = interfaceText[language];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href={favicon} sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
+    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
+    <link rel="manifest" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/site.webmanifest`} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={isIndexable(page) ? 'index, follow' : 'noindex, follow'} />

@@ -1,6 +1,8 @@
 ---
 import { pages, pageUrl, type Language, type SitePage } from '../config/pages';
 import { interfaceText } from '../config/interface';
+import { Image } from 'astro:assets';
+import logo from '../../assets/logo/45896.jpg';
 interface Props { page: SitePage; language: Language }
 const { page, language } = Astro.props;
 const text = interfaceText[language];
@@ -8,7 +10,7 @@ const alternate = language === 'el' ? 'en' : 'el';
 ---
 <header class="site-header">
   <a class="brand" href={pageUrl(pages[0], language)}>
-    <span>{text.brand}</span>
+    <Image class="brand-logo" src={logo} alt={text.brand} width={240} widths={[240, 480]} sizes="240px" loading="eager" />
     <small>{text.provisional}</small>
   </a>
   <div class="navigation-bar">

@@ -9,7 +9,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 export async function buildFixture({ source, target, outDir, env }) {
   const temporaryRoot = await mkdtemp(join(tmpdir(), 'healing-fixture-'));
   try {
-    for (const sourcePath of ['src', 'public', 'astro.config.ts', 'tsconfig.json', 'package.json']) {
+    for (const sourcePath of ['src', 'public', 'assets', 'astro.config.ts', 'tsconfig.json', 'package.json']) {
       await cp(join(root, sourcePath), join(temporaryRoot, sourcePath), { recursive: true });
     }
     await symlink(join(root, 'node_modules'), join(temporaryRoot, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir');
