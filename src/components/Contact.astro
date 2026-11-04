@@ -26,9 +26,8 @@ const details = site.contact;
   <dl class="contact-details">
     <div><dt>{content.telephone}</dt><dd>{details.telephone ? <a href={`tel:${details.telephone}`}>{details.telephone}</a> : content.missing}</dd></div>
     <div><dt>{content.email}</dt><dd>{details.email ? <a href={`mailto:${details.email}`}>{details.email}</a> : content.missing}</dd></div>
-    <div><dt>{content.address}</dt><dd>{details.address?.[language] ? <address>{details.address[language]}</address> : content.missing}</dd></div>
+    <div><dt>{content.address}</dt><dd>{details.address?.[language] ? <address>{details.address[language]}</address> : content.missing}<div>{details.directionsUrl ? <a href={details.directionsUrl}>{content.directionsLink}</a> : content.missing}</div></dd></div>
     <div><dt>{content.workingHours}</dt><dd>{details.workingHours?.[language] || content.missing}</dd></div>
-    <div><dt>{content.directions}</dt><dd>{details.directionsUrl ? <a href={details.directionsUrl}>{content.directionsLink}</a> : content.missing}</dd></div>
     <div><dt>{content.sessionLanguagesLabel}</dt><dd>{content.sessionLanguages}</dd></div>
   </dl>
   </div>
