@@ -57,7 +57,11 @@ for (const language of [
 
   test(`${language.lang}: Home introduces all session formats with working content links`, async ({ page, baseURL }) => {
     await page.goto(`${baseURL}${language.prefix}/`);
-    await expect(page.locator('main')).toContainText(language.lang === 'el' ? 'στην οποία εκπαιδεύομαι' : 'in which I am currently training');
+    const firstSection = page.locator('.copy-section').first();
+    await expect(firstSection.getByRole('heading', { level: 2 })).toHaveText(language.lang === 'el' ? 'Γιατί να ξεκινήσει κάποιος ψυχοθεραπεία;' : 'Why start psychotherapy?');
+    await expect(firstSection.locator('.section-body > p')).toHaveCount(2);
+    await expect(firstSection).toContainText(language.lang === 'el' ? 'να αντιμετωπίσει μεταβάσεις ή αλλαγές στη ζωή του.' : 'navigate transitions or changes in their lives.');
+    await expect(page.locator('main')).not.toContainText(/ολοκληρ[^.]*τετραετ|completed[^.]*four.year/i);
     await expect(page.locator('main h2')).toHaveText(home[language.lang].sections.map(section => section.heading));
     await expect(page.locator('main h3')).toHaveText(language.lang === 'el'
       ? ['Ατομικές συνεδρίες', 'Ομαδική ψυχοθεραπεία', 'Θεραπεία ζεύγους', 'Ψυχοθεραπεία εφήβων']

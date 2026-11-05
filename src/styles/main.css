@@ -82,6 +82,7 @@ main { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); ma
 .section-number { display: block; margin-bottom: 1rem; color: var(--color-muted); font-size: 0.75rem; letter-spacing: 0.1em; }
 .section-body { min-width: 0; color: var(--color-muted); }
 .section-body p + p { margin-top: 1.25rem; }
+.page-home .copy-section:first-of-type .section-body { max-width: 62ch; line-height: 1.8; }
 .page-services .copy-section:not(.section-entries) .section-body { max-width: 62ch; line-height: 1.8; }
 .page-services .section-body p + p { margin-top: 1rem; }
 .content-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.75rem; margin-top: 2rem; }
