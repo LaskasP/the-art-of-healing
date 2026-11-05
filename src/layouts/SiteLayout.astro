@@ -3,6 +3,7 @@ import { languages, type Language, type SitePage } from '../config/pages';
 import { canonicalUrl, isIndexable } from '../config/seo';
 import { interfaceText } from '../config/interface';
 import Header from '../components/Header.astro';
+import { contact } from '../config/contact';
 import favicon from '../../assets/favicon/favicon.ico?url';
 import favicon16 from '../../assets/favicon/favicon-16x16.png?url';
 import favicon32 from '../../assets/favicon/favicon-32x32.png?url';
@@ -18,6 +19,7 @@ import serifLatin from '../assets/fonts/noto-serif-latin.woff2?url';
 interface Props { page: SitePage; language: Language; title: string; description: string }
 const { page, language, title, description } = Astro.props;
 const text = interfaceText[language];
+const instagramHandle = contact.instagramUrl ? `@${new URL(contact.instagramUrl).pathname.split('/').filter(Boolean)[0]}` : '';
 ---
 <!doctype html>
 <html lang={language}>
@@ -45,6 +47,20 @@ const text = interfaceText[language];
     <a class="skip-link" href="#main">{text.skip}</a>
     <Header page={page} language={language} />
     <main id="main"><slot /></main>
-    <footer class="site-footer"><div class="footer-inner"><span class="footer-brand">{text.brand}</span><p>{text.footer}</p><span class="footer-mark" aria-hidden="true">↗</span></div></footer>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-brand">{text.brand}</span>
+        <p>{text.footer}</p>
+        {contact.instagramUrl && <a class="footer-instagram" href={contact.instagramUrl} aria-label={`${text.instagramLabel} · ${instagramHandle}`}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+          </svg>
+          <span><small>{instagramHandle}</small></span>
+          <span aria-hidden="true">↗</span>
+        </a>}
+      </div>
+    </footer>
   </body>
 </html>

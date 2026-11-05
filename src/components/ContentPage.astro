@@ -17,6 +17,7 @@ const text = interfaceText[language];
     <div class="hero-copy">
       <p class="eyebrow">{content.eyebrow || text.pages[pageId]}</p>
       <h1>{content.heading}</h1>
+      {content.headingAttribution && <p class="heading-attribution">— {content.headingAttribution}</p>}
       {content.paragraphs.slice(0, 1).map((paragraph) => <p class="introduction">{paragraph}</p>)}
       <ContentLinks links={content.links} language={language} />
     </div>

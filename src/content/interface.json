@@ -2,6 +2,7 @@
   "el": {
     "brand": "The art of healing",
     "navigation": "Κύρια πλοήγηση",
+    "instagramLabel": "Δείτε το προφίλ στο Instagram",
     "menu": "Μενού",
     "skip": "Μετάβαση στο περιεχόμενο",
     "switchLanguage": "Read this page in English",
@@ -21,6 +22,7 @@
   "en": {
     "brand": "The art of healing",
     "navigation": "Main navigation",
+    "instagramLabel": "View Instagram profile",
     "menu": "Menu",
     "skip": "Skip to content",
     "switchLanguage": "Διαβάστε αυτή τη σελίδα στα Ελληνικά",

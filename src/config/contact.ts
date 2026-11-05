@@ -1,6 +1,7 @@
 import details from '../content/contact-details.json';
 
 export interface ContactDetails {
+  instagramUrl?: string | null;
   telephone: string | null;
   email: string | null;
   address: { el: string; en: string } | null;

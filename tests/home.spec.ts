@@ -7,13 +7,15 @@ test('visitors open either Home language directly without browser-language redir
   await englishBrowser.goto(`${baseURL}/`);
   await expect(englishBrowser).toHaveURL(`${baseURL}/`);
   await expect(englishBrowser.locator('html')).toHaveAttribute('lang', 'el');
-  await expect(englishBrowser.getByRole('heading', { level: 1 })).toHaveText('Να δώσουμε χώρο σε όσα σας απασχολούν');
+  await expect(englishBrowser.getByRole('heading', { level: 1 })).toHaveText('Το παρελθόν μάς καθορίζει αλλά δεν μας καταδικάζει');
+  await expect(englishBrowser.locator('h1 + .heading-attribution')).toHaveText('— Χάρις Κατάκη');
   await context.close();
 
   await page.goto(`${baseURL}/en/`);
   await expect(page).toHaveURL(`${baseURL}/en/`);
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Making room for what is on your mind');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('The past shapes us but does not define us');
+  await expect(page.locator('h1 + .heading-attribution')).toHaveText('— Charis Katakis');
 });
 
 for (const language of [

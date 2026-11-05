@@ -65,6 +65,7 @@ main { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); ma
 .eyebrow { display: flex; align-items: center; gap: 0.7rem; color: var(--color-teal); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.07em; line-height: 1.6; margin-bottom: 1.5rem; }
 .eyebrow::before { content: ''; width: 1.75rem; height: 1px; background: currentColor; flex-shrink: 0; }
 .introduction { color: var(--color-muted); font-size: 1.05rem; margin-top: 1.75rem; max-width: 51ch; }
+.heading-attribution { margin-top: 1rem; color: var(--color-muted); font-size: 1rem; }
 .hero-image { position: relative; padding-bottom: 2rem; }
 .hero-image::before { content: ''; position: absolute; inset: 2rem -1rem 3rem 2rem; border: 1px solid var(--color-accent); border-radius: 0.25rem 5rem 0.25rem 0.25rem; z-index: -1; }
 .hero-image img { width: 100%; height: clamp(26rem, 40vw, 35rem); object-fit: cover; border-radius: 0.25rem 5rem 0.25rem 0.25rem; }
@@ -128,7 +129,11 @@ main { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); ma
 .footer-inner { display: grid; grid-template-columns: 1fr 1.5fr auto; align-items: center; gap: 3rem; max-width: var(--content-width); margin: auto; }
 .footer-brand { font-family: var(--font-heading); color: var(--color-teal); font-size: 1.5rem; }
 .site-footer p { color: var(--color-muted); font-size: 0.8rem; max-width: 65ch; }
-.footer-mark { color: var(--color-teal); font-size: 2rem; }
+.footer-instagram { display: inline-flex; align-items: center; gap: 0.8rem; min-height: 44px; padding: 0.5rem; text-decoration: none; border-radius: 0.25rem; }
+.footer-instagram:hover { background: var(--color-paper); }
+.footer-instagram svg { flex-shrink: 0; }
+.footer-instagram > span { min-width: 0; }
+.footer-instagram small { display: block; color: var(--color-muted); font-size: 0.75rem; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
 }

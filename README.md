@@ -130,7 +130,7 @@ Custom-domain purchase/provisioning, DNS changes, final visual/launch approval a
 See [src/content/README.md](src/content/README.md) for the complete editing workflow, field reference and JSON example. Text changes require no edits to Astro components or TypeScript.
 
 - `src/content/home.json`, `biography.json`, `services.json` and `contact.json` each hold both language versions of a page, including its search title and description.
-- `src/content/contact-details.json` is the single source for phone, email, the Piraeus address/floor, opening hours and Maps URL. `src/config/contact.ts` loads these values for the Contact renderer.
+- `src/content/contact-details.json` is the single source for phone, email, the Piraeus address/floor, opening hours, Maps URL and Instagram profile URL. `src/config/contact.ts` loads these values for the Contact renderer.
 - `src/content/interface.json` holds branding, navigation labels, language-switch names, accessibility wording and the footer.
 - The root `/content/` reference folder is ignored; the website's `src/content/` files are version-controlled and sufficient for a clean build. The approved source CV is not required at build time.
 

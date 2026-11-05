@@ -8,7 +8,7 @@ Edit the UTF-8 JSON files here. No template or TypeScript changes are needed to 
 | `biography.json` | Biography text, education list and professional/personal sections |
 | `services.json` | Services text, first-meeting section and FAQ questions/answers |
 | `contact.json` | Contact page text, labels, professional description and session languages |
-| `contact-details.json` | Shared telephone, email, address, working hours and Maps URL |
+| `contact-details.json` | Shared telephone, email, address, working hours, Maps URL and Instagram profile URL |
 | `interface.json` | Brand name, navigation labels, menu/accessibility wording, language names and footer |
 
 The page/interface files have `el` and `en` entries. Keep the two versions aligned when editing facts or adding sections. The small `.ts` files only import/check the data; leave them alone when editing copy.
@@ -36,7 +36,7 @@ Home, Biography and Services share this structure within each language:
 }
 ```
 
-`title`, `description`, `heading`, `paragraphs` and `sections` are required on these pages. `eyebrow` is an optional short line above the page heading. Within sections, only `heading` is required; omit any unused `paragraphs`, `list`, `entries` or `links`. Array order controls reading order. Entries render as subheadings and descriptions; use them for service summaries or FAQ questions. List items render as a normal bullet list.
+`title`, `description`, `heading`, `paragraphs` and `sections` are required on these pages. `eyebrow` is an optional short line above the page heading. `headingAttribution` is an optional author credit directly below the main heading; keep it aligned in both languages when quoting someone. Within sections, only `heading` is required; omit any unused `paragraphs`, `list`, `entries` or `links`. Array order controls reading order. Entries render as subheadings and descriptions; use them for service summaries or FAQ questions. List items render as a normal bullet list.
 
 Text is plain text, not Markdown or HTML. Use separate strings for paragraphs, rather than `<p>` tags. Double quotes inside JSON strings must be escaped as `\"`. JSON does not allow comments or trailing commas.
 
@@ -52,7 +52,7 @@ For internal calls to action, `page` is one of `home`, `biography`, `services`, 
 
 ## Contact details
 
-Update actual values in `contact-details.json`, not in the component or localized page labels. Keep the telephone in international form without spaces, for example `+306980337500`; it is used for the telephone link. `address` and `workingHours` contain `el`/`en` translations; `\n` can be used for a line break. `directionsUrl` is an ordinary external link. A missing detail can be set to `null`, which displays the localized `missing` wording rather than a fabricated link.
+Update actual values in `contact-details.json`, not in the component or localized page labels. Keep the telephone in international form without spaces, for example `+306980337500`; it is used for the telephone link. `address` and `workingHours` contain `el`/`en` translations; `\n` can be used for a line break. `directionsUrl` is an ordinary external link. `instagramUrl` controls the shared footer profile link; omit it or set it to `null` to hide the link. Its accessible label is translated in `interface.json` as `instagramLabel`. A missing detail can be set to `null`, which displays the localized `missing` wording rather than a fabricated link.
 
 Contact labels, the professional name/qualification, service-area description and the session-language statement live in `contact.json`. Session languages are a confirmed practice fact, separate from the website language switch.
 

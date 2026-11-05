@@ -5,7 +5,7 @@
     "heading": "Ας ξεκινήσουμε με μια συζήτηση",
     "introduction": "Για να μάθετε περισσότερα για τις συνεδρίες ή να συζητήσουμε τη δυνατότητα μιας πρώτης συνάντησης, μπορείτε να επικοινωνήσετε μαζί μου τηλεφωνικά ή μέσω email.",
     "name": "Πολυξένη Πέττα",
-    "qualification": "Ψυχολόγος · Ολοκληρωμένη τετραετής εκπαίδευση στη Συστημική Ψυχοθεραπεία",
+    "qualification": "Ψυχολόγος · Ειδικευόμενη στην Συστημική Ψυχοθεραπεία",
     "telephone": "Τηλέφωνο",
     "email": "Email",
     "address": "Διεύθυνση",
@@ -16,7 +16,7 @@
     "sessionLanguagesLabel": "Γλώσσες συνεδριών",
     "sessionLanguages": "Ελληνικά και Αγγλικά.",
     "geographyHeading": "Γραφείο στον Πειραιά",
-    "geography": "Οι διά ζώσης συνεδρίες πραγματοποιούνται στο ιδιωτικό μου γραφείο στον Πειραιά. Η περιοχή εξυπηρέτησης περιλαμβάνει την Αθήνα και την Κόρινθο. Υπάρχει επίσης δυνατότητα διαδικτυακών συνεδριών."
+    "geography": "Οι διά ζώσης συνεδρίες πραγματοποιούνται στο ιδιωτικό μου γραφείο στον Πειραιά. Υπάρχει επίσης δυνατότητα διαδικτυακών συνεδριών."
   },
   "en": {
     "title": "Contact | Polyxeni Petta, Psychologist in Piraeus",
@@ -24,7 +24,7 @@
     "heading": "Let's begin with a conversation",
     "introduction": "To learn more about sessions or discuss the possibility of an initial meeting, you can contact me by telephone or email.",
     "name": "Polyxeni Petta",
-    "qualification": "Psychologist · Completed four-year training in systemic psychotherapy",
+    "qualification": "Psychologist · Specializing in Systemic Psychotherapy",
     "telephone": "Telephone",
     "email": "Email",
     "address": "Address",
@@ -35,6 +35,6 @@
     "sessionLanguagesLabel": "Session languages",
     "sessionLanguages": "Greek and English.",
     "geographyHeading": "Private practice in Piraeus",
-    "geography": "In-person sessions take place at my private practice in Piraeus. The service area includes Athens and Korinthos. Online sessions are also available."
+    "geography": "In-person sessions take place at my private practice in Piraeus. Online sessions are also available."
   }
 }

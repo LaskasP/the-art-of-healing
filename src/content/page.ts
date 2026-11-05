@@ -18,6 +18,7 @@ export interface PageContent {
   title: string;
   description: string;
   heading: string;
+  headingAttribution?: string;
   eyebrow?: string;
   paragraphs: string[];
   links?: ContentLink[];
