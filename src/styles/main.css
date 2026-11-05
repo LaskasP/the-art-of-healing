@@ -83,6 +83,7 @@ main { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); ma
 .section-body { min-width: 0; color: var(--color-muted); }
 .section-body p + p { margin-top: 1.25rem; }
 .page-home .copy-section:first-of-type .section-body { max-width: 62ch; line-height: 1.8; }
+.page-home .copy-section:first-of-type .section-body p + p { margin-top: 1rem; }
 .page-services .copy-section:not(.section-entries) .section-body { max-width: 62ch; line-height: 1.8; }
 .page-services .section-body p + p { margin-top: 1rem; }
 .content-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.75rem; margin-top: 2rem; }
