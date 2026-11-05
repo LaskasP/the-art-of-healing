@@ -20,7 +20,7 @@ for (const language of [
     await expect(page.locator('a[href^="mailto:"]')).toHaveAttribute('href', 'mailto:xenpett@gmail.com');
     const officeDetails = page.getByRole('definition').filter({ hasText: language.address });
     const directions = officeDetails.getByRole('link', { name: copy[language.lang].directionsLink });
-    await expect(directions).toHaveAttribute('href', 'https://maps.app.goo.gl/yYi1nNr9cavpd8aS7g_st=ic');
+    await expect(directions).toHaveAttribute('href', 'https://maps.app.goo.gl/X5m44UyVwSH1Joeq9');
     await directions.focus();
     await expect(directions).toBeFocused();
     await expect(directions).toHaveCSS('outline-style', 'solid');
