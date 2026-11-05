@@ -82,6 +82,8 @@ main { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); ma
 .section-number { display: block; margin-bottom: 1rem; color: var(--color-muted); font-size: 0.75rem; letter-spacing: 0.1em; }
 .section-body { min-width: 0; color: var(--color-muted); }
 .section-body p + p { margin-top: 1.25rem; }
+.page-services .copy-section:not(.section-entries) .section-body { max-width: 62ch; line-height: 1.8; }
+.page-services .section-body p + p { margin-top: 1rem; }
 .content-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.75rem; margin-top: 2rem; }
 .content-links a { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 44px; padding: 0.5rem 0; font-size: 0.9rem; }
 .content-links a svg { flex-shrink: 0; width: 1.25rem; height: 1.25rem; }
@@ -92,6 +94,7 @@ main { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); ma
 .section-entries .section-heading { margin-bottom: 2.5rem; }
 .section-entries .section-heading h2 { max-width: none; }
 .content-entries { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.page-home .content-entries { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .content-entry { padding: 2rem; background: var(--color-surface); border-radius: 0.25rem; }
 .entry-mark { display: block; font-size: 0.75rem; color: var(--color-teal); letter-spacing: 0.08em; margin-bottom: 2rem; }
 .content-entry h3 { margin-bottom: 1rem; color: var(--color-teal-dark); }

@@ -9,7 +9,7 @@ Polyxeni Petta, the individual professional represented by this website. She is 
 _Avoid_: Team, clinic (unless the practice structure changes).
 
 **Service**:
-A form of professional support actually offered by the psychologist: individual psychological support for adults and adolescents, and couples sessions. These are available in person and online. Past experience and training do not by themselves establish an additional current service.
+A form of professional support actually offered by the psychologist: individual sessions, group psychotherapy, couples therapy and adolescent psychotherapy. In-person and online sessions are available; do not assume that every format is available online. Group psychotherapy is included in the service copy supplied by the user. Past experience and training do not by themselves establish an additional current service.
 
 **Office**:
 The psychologist's private physical practice location in Piraeus.

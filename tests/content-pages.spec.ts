@@ -44,6 +44,10 @@ for (const language of [
     await expect(page.locator('main li').nth(1)).toContainText(language.lang === 'el' ? 'Τετραετής εκπαίδευση σε εξέλιξη' : 'Four-year training programme in progress');
     await expect(page.locator('main')).not.toContainText(/ολοκληρ[^.]*τετραετ|completed[^.]*four.year/i);
     await page.goto(`${baseURL}${language.prefix}/services/`);
+    await expect(page.locator('main .copy-section:nth-of-type(-n+4) h2')).toHaveText(language.lang === 'el'
+      ? ['Ατομικές συνεδρίες', 'Ομαδική ψυχοθεραπεία', 'Θεραπεία ζεύγους', 'Ψυχοθεραπεία εφήβων']
+      : ['Individual sessions', 'Group psychotherapy', 'Couples therapy', 'Adolescent psychotherapy']);
+    await expect(page.locator('.copy-section').nth(3).locator('.section-body > p')).toHaveCount(3);
     await expect(page.locator('main h3')).toHaveCount(3);
     const link = page.locator('main .content-links a');
     await expect(link).toHaveAttribute('href', `${new URL(baseURL!).pathname.replace(/\/$/, '')}${language.prefix}/contact/`);
@@ -55,7 +59,9 @@ for (const language of [
     await page.goto(`${baseURL}${language.prefix}/`);
     await expect(page.locator('main')).toContainText(language.lang === 'el' ? 'στην οποία εκπαιδεύομαι' : 'in which I am currently training');
     await expect(page.locator('main h2')).toHaveText(home[language.lang].sections.map(section => section.heading));
-    await expect(page.locator('main h3')).toHaveCount(3);
+    await expect(page.locator('main h3')).toHaveText(language.lang === 'el'
+      ? ['Ατομικές συνεδρίες', 'Ομαδική ψυχοθεραπεία', 'Θεραπεία ζεύγους', 'Ψυχοθεραπεία εφήβων']
+      : ['Individual sessions', 'Group psychotherapy', 'Couples therapy', 'Adolescent psychotherapy']);
     const links = page.locator('main .content-links a');
     await expect(links).toHaveCount(4);
     for (const href of await links.evaluateAll(anchors => anchors.map(anchor => (anchor as HTMLAnchorElement).href))) {

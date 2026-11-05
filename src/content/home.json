@@ -1,7 +1,7 @@
 {
   "el": {
     "title": "Πολυξένη Πέττα | Ψυχολόγος στον Πειραιά",
-    "description": "Γνωρίστε την ψυχολόγο Πολυξένη Πέττα. Ατομική ψυχολογική υποστήριξη ενηλίκων και εφήβων και συνεδρίες ζεύγους, στον Πειραιά και διαδικτυακά.",
+    "description": "Γνωρίστε την ψυχολόγο Πολυξένη Πέττα: ατομικές συνεδρίες, ομαδική ψυχοθεραπεία, θεραπεία ζεύγους και ψυχοθεραπεία εφήβων στον Πειραιά.",
     "heading": "Το παρελθόν μάς καθορίζει αλλά δεν μας καταδικάζει",
     "headingAttribution": "Χάρις Κατάκη",
     "paragraphs": [
@@ -36,16 +36,20 @@
         ],
         "entries": [
           {
-            "heading": "Ατομικές συνεδρίες ενηλίκων",
+            "heading": "Ατομικές συνεδρίες",
             "text": "Ένας προσωπικός χώρος για να μιλήσετε για όσα σας απασχολούν και να διερευνήσετε τις ανάγκες και τις σχέσεις σας."
           },
           {
-            "heading": "Ατομικές συνεδρίες εφήβων",
-            "text": "Ψυχολογική υποστήριξη στην εφηβεία, με χώρο για τις σκέψεις, τα συναισθήματα και τις σχέσεις που αποκτούν σημασία σε αυτή την περίοδο."
+            "heading": "Ομαδική ψυχοθεραπεία",
+            "text": "Προσωπική ανάπτυξη μέσα από τη συνάντηση και την αλληλεπίδραση με άλλους ανθρώπους, με χώρο για σύνδεση, αυτογνωσία και αλλαγή."
           },
           {
-            "heading": "Συνεδρίες ζεύγους",
+            "heading": "Θεραπεία ζεύγους",
             "text": "Ένας χώρος συζήτησης για όσα συμβαίνουν στη σχέση και για τους τρόπους με τους οποίους επικοινωνείτε και συνδέεστε."
+          },
+          {
+            "heading": "Ψυχοθεραπεία εφήβων",
+            "text": "Ένας ασφαλής χώρος όπου οι έφηβοι μπορούν να εκφραστούν ελεύθερα, να ακουστούν και να βρουν τον δικό τους τρόπο να προχωρήσουν."
           }
         ]
       },
@@ -74,7 +78,7 @@
   },
   "en": {
     "title": "Polyxeni Petta | Psychologist in Piraeus",
-    "description": "Meet psychologist Polyxeni Petta. Individual psychological support for adults and adolescents and couples sessions, in Piraeus and online.",
+    "description": "Meet psychologist Polyxeni Petta: individual sessions, group psychotherapy, couples therapy and adolescent psychotherapy in Piraeus.",
     "heading": "The past shapes us but does not define us",
     "headingAttribution": "Charis Katakis",
     "paragraphs": [
@@ -109,16 +113,20 @@
         ],
         "entries": [
           {
-            "heading": "Individual sessions for adults",
+            "heading": "Individual sessions",
             "text": "A personal space to talk about what is on your mind and explore your needs and relationships."
           },
           {
-            "heading": "Individual sessions for adolescents",
-            "text": "Psychological support during adolescence, with room for the thoughts, feelings and relationships that become significant during this stage of life."
+            "heading": "Group psychotherapy",
+            "text": "Personal growth through meeting and interacting with others, with space for connection, self-awareness and change."
           },
           {
-            "heading": "Couples sessions",
+            "heading": "Couples therapy",
             "text": "Space to discuss what is happening in your relationship and how you communicate and connect with one another."
+          },
+          {
+            "heading": "Adolescent psychotherapy",
+            "text": "A safe space where adolescents can express themselves freely, be heard and find their own way forward."
           }
         ]
       },
