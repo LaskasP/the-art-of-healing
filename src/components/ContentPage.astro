@@ -11,6 +11,7 @@ import { contact } from '../content/contact';
 interface Props { content: PageContent; language: Language; pageId: 'home' | 'biography' | 'services' }
 const { content, language, pageId } = Astro.props;
 const text = interfaceText[language];
+const introductionCount = pageId === 'home' ? content.paragraphs.length : 1;
 ---
 <article class:list={['content-page', `page-${pageId}`]}>
   <header class="hero hero-split">
@@ -18,7 +19,7 @@ const text = interfaceText[language];
       <p class="eyebrow">{content.eyebrow || text.pages[pageId]}</p>
       <h1>{content.heading}</h1>
       {content.headingAttribution && <p class="heading-attribution">— {content.headingAttribution}</p>}
-      {content.paragraphs.slice(0, 1).map((paragraph) => <p class="introduction">{paragraph}</p>)}
+      <div class="introduction">{content.paragraphs.slice(0, introductionCount).map((paragraph) => <p>{paragraph}</p>)}</div>
       <ContentLinks links={content.links} language={language} />
     </div>
     {pageId === 'biography' ? (
@@ -34,9 +35,9 @@ const text = interfaceText[language];
       </figure>
     )}
   </header>
-  {content.paragraphs.length > 1 && <div class="hero-continuation">
+  {content.paragraphs.length > introductionCount && <div class="hero-continuation">
     <span class="section-marker" aria-hidden="true">↳</span>
-    <div>{content.paragraphs.slice(1).map((paragraph) => <p>{paragraph}</p>)}</div>
+    <div>{content.paragraphs.slice(introductionCount).map((paragraph) => <p>{paragraph}</p>)}</div>
   </div>}
   {content.sections.map((section, index) => (
     <section class:list={['copy-section', { 'section-entries': !!section.entries, 'section-invitation': section.invitation }]}>

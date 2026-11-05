@@ -40,6 +40,8 @@ Home, Biography and Services share this structure within each language:
 
 Text is plain text, not Markdown or HTML. Use separate strings for paragraphs, rather than `<p>` tags. Double quotes inside JSON strings must be escaped as `\"`. JSON does not allow comments or trailing commas.
 
+Home keeps all introductory `paragraphs` together beside the hero photograph, with space between paragraphs. Biography and Services show the first introductory paragraph beside the hero image and any remaining paragraphs below it.
+
 Two optional section flags control presentation: `officeGallery: true` adds the office photographs, and `invitation: true` gives a section the dark teal invitation treatment. Keep these flags aligned in both languages. They move with their section when you reorder the content.
 
 ## Photographs and visual design

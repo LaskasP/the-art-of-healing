@@ -65,6 +65,9 @@ main { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); ma
 .eyebrow { display: flex; align-items: center; gap: 0.7rem; color: var(--color-teal); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.07em; line-height: 1.6; margin-bottom: 1.5rem; }
 .eyebrow::before { content: ''; width: 1.75rem; height: 1px; background: currentColor; flex-shrink: 0; }
 .introduction { color: var(--color-muted); font-size: 1.05rem; margin-top: 1.75rem; max-width: 51ch; }
+.page-home .introduction { margin-top: 1.5rem; line-height: 1.7; }
+.page-home .introduction p + p { margin-top: 1rem; }
+.page-home .hero-copy > .content-links { margin-top: 1.5rem; }
 .heading-attribution { margin-top: 1rem; color: var(--color-muted); font-size: 1rem; }
 .hero-image { position: relative; padding-bottom: 2rem; }
 .hero-image::before { content: ''; position: absolute; inset: 2rem -1rem 3rem 2rem; border: 1px solid var(--color-accent); border-radius: 0.25rem 5rem 0.25rem 0.25rem; z-index: -1; }

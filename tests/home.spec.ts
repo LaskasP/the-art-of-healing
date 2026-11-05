@@ -9,6 +9,9 @@ test('visitors open either Home language directly without browser-language redir
   await expect(englishBrowser.locator('html')).toHaveAttribute('lang', 'el');
   await expect(englishBrowser.getByRole('heading', { level: 1 })).toHaveText('Το παρελθόν μάς καθορίζει αλλά δεν μας καταδικάζει');
   await expect(englishBrowser.locator('h1 + .heading-attribution')).toHaveText('— Χάρις Κατάκη');
+  await expect(englishBrowser.locator('.hero-copy .introduction p')).toHaveCount(2);
+  await expect(englishBrowser.locator('.hero-copy .introduction p').first()).toHaveText('Η ψυχοθεραπεία είναι μια διαδικασία προσωπικής διερεύνησης, κατανόησης και αλλαγής.');
+  await expect(englishBrowser.locator('.hero-continuation')).toHaveCount(0);
   await context.close();
 
   await page.goto(`${baseURL}/en/`);
@@ -16,6 +19,9 @@ test('visitors open either Home language directly without browser-language redir
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('The past shapes us but does not define us');
   await expect(page.locator('h1 + .heading-attribution')).toHaveText('— Charis Katakis');
+  await expect(page.locator('.hero-copy .introduction p')).toHaveCount(2);
+  await expect(page.locator('.hero-copy .introduction p').first()).toHaveText('Psychotherapy is a process of personal exploration, understanding and change.');
+  await expect(page.locator('.hero-continuation')).toHaveCount(0);
 });
 
 for (const language of [
