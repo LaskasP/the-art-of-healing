@@ -40,7 +40,9 @@ for (const language of [
   test(`${language.lang}: biography education and service formats are readable`, async ({ page, baseURL }) => {
     await page.goto(`${baseURL}${language.prefix}/bio/`);
     await expect(page.locator('main li')).toHaveCount(4);
-    await expect(page.locator('main')).toContainText(language.lang === 'el' ? 'Έχω ολοκληρώσει την τετραετή εκπαίδευση' : 'I have completed a four-year training programme');
+    await expect(page.locator('main')).toContainText(language.lang === 'el' ? 'Είμαι ειδικευόμενη στη Συστημική Ψυχοθεραπεία' : 'I am currently training in systemic psychotherapy');
+    await expect(page.locator('main li').nth(1)).toContainText(language.lang === 'el' ? 'Τετραετής εκπαίδευση σε εξέλιξη' : 'Four-year training programme in progress');
+    await expect(page.locator('main')).not.toContainText(/ολοκληρ[^.]*τετραετ|completed[^.]*four.year/i);
     await page.goto(`${baseURL}${language.prefix}/services/`);
     await expect(page.locator('main h3')).toHaveCount(3);
     const link = page.locator('main .content-links a');
@@ -51,6 +53,7 @@ for (const language of [
 
   test(`${language.lang}: Home introduces all session formats with working content links`, async ({ page, baseURL }) => {
     await page.goto(`${baseURL}${language.prefix}/`);
+    await expect(page.locator('main')).toContainText(language.lang === 'el' ? 'στην οποία εκπαιδεύομαι' : 'in which I am currently training');
     await expect(page.locator('main h2')).toHaveText(home[language.lang].sections.map(section => section.heading));
     await expect(page.locator('main h3')).toHaveCount(3);
     const links = page.locator('main .content-links a');

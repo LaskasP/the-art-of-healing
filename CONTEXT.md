@@ -5,7 +5,7 @@ A public website introducing one psychologist and the services offered by their 
 ## Language
 
 **Psychologist**:
-Polyxeni Petta, the individual professional represented by this website. She is a psychologist who has completed four-year training in systemic psychotherapy.
+Polyxeni Petta, the individual professional represented by this website. She is a psychologist currently undertaking four-year training in systemic psychotherapy. Her systemic psychotherapy training is in progress.
 _Avoid_: Team, clinic (unless the practice structure changes).
 
 **Service**:
