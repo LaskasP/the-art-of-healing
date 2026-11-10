@@ -12,13 +12,13 @@ _Avoid_: Team, clinic (unless the practice structure changes).
 A form of professional support actually offered by the psychologist: individual sessions, group psychotherapy, couples therapy and adolescent psychotherapy. In-person and online sessions are available; do not assume that every format is available online. Group psychotherapy is included in the service copy supplied by the user. Past experience and training do not by themselves establish an additional current service.
 
 **Office**:
-The psychologist's private physical practice location in Piraeus.
+The psychologist's private physical practice location in Piraeus. The user has confirmed that the office is accessible to people with disabilities and wheelchair users.
 
 **Service area**:
-The areas whose residents the practice serves, including Athens and Korinthos; this does not imply an office in each area.
+The areas whose residents the practice serves, including Athens; this does not imply an office in each area.
 
 **Professional collaboration**:
-Work undertaken with another organisation, including PROSOPA in Korinthos. A collaboration does not establish a second private office.
+Work undertaken with another organisation, including PROSOPA. A collaboration does not establish a second private office.
 
 **Online session**:
 A session with the psychologist conducted remotely.

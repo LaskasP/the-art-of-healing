@@ -27,7 +27,7 @@
         ]
       },
       {
-        "heading": "Πώς μπορούμε να συναντηθούμε",
+        "heading": "Διαδικασία και συνεδρίες",
         "links": [
           {
             "page": "services",
@@ -54,14 +54,14 @@
         ]
       },
       {
-        "heading": "Στον Πειραιά και διαδικτυακά",
+        "heading": "Ο χώρος μου",
         "officeGallery": true,
         "paragraphs": [
-          "Το ιδιωτικό μου γραφείο βρίσκεται στον Πειραιά. Η περιοχή εξυπηρέτησης περιλαμβάνει την Αθήνα και την Κόρινθο, ενώ υπάρχει και δυνατότητα διαδικτυακών συνεδριών."
+          "Το ιδιωτικό μου γραφείο βρίσκεται στον Πειραιά και είναι προσβάσιμο σε άτομα με αναπηρία και χρήστες αμαξιδίου. Η περιοχή εξυπηρέτησης περιλαμβάνει την Αθήνα, ενώ υπάρχει και δυνατότητα διαδικτυακών συνεδριών."
         ]
       },
       {
-        "heading": "Το πρώτο βήμα μπορεί να είναι μια συζήτηση",
+        "heading": "Συνάντηση",
         "invitation": true,
         "paragraphs": [
           "Μπορείτε να επικοινωνήσετε μαζί μου για να συζητήσουμε το αίτημά σας και τη δυνατότητα μιας πρώτης συνάντησης."
@@ -104,7 +104,7 @@
         ]
       },
       {
-        "heading": "Ways we can meet",
+        "heading": "About the sessions",
         "links": [
           {
             "page": "services",
@@ -131,10 +131,10 @@
         ]
       },
       {
-        "heading": "In Piraeus and online",
+        "heading": "The office",
         "officeGallery": true,
         "paragraphs": [
-          "My private practice is in Piraeus. The service area includes Athens and Korinthos, and online sessions are also available."
+          "My private practice is in Piraeus, and the office is accessible to people with disabilities and wheelchair users. The service area includes Athens, and online sessions are also available."
         ]
       },
       {

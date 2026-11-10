@@ -12,6 +12,9 @@ for (const language of [
     await expect(page).toHaveTitle(copy[language.lang].title);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(copy[language.lang].heading);
+    await expect(page.locator('main')).toContainText(language.lang === 'el'
+      ? 'Το γραφείο είναι προσβάσιμο σε άτομα με αναπηρία και χρήστες αμαξιδίου.'
+      : 'The office is accessible to people with disabilities and wheelchair users.');
     await expect(page.getByRole('definition')).toHaveCount(5);
     await expect(page.locator('main address')).toHaveText(language.address);
     await expect(page.getByRole('definition').filter({ hasText: language.hours })).toBeVisible();

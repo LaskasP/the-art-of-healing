@@ -16,7 +16,7 @@
     "sessionLanguagesLabel": "Γλώσσες συνεδριών",
     "sessionLanguages": "Ελληνικά και Αγγλικά.",
     "geographyHeading": "Γραφείο στον Πειραιά",
-    "geography": "Οι διά ζώσης συνεδρίες πραγματοποιούνται στο ιδιωτικό μου γραφείο στον Πειραιά. Υπάρχει επίσης δυνατότητα διαδικτυακών συνεδριών."
+    "geography": "Οι διά ζώσης συνεδρίες πραγματοποιούνται στο ιδιωτικό μου γραφείο στον Πειραιά. Το γραφείο είναι προσβάσιμο σε άτομα με αναπηρία και χρήστες αμαξιδίου. Υπάρχει επίσης δυνατότητα διαδικτυακών συνεδριών."
   },
   "en": {
     "title": "Contact | Polyxeni Petta, Psychologist in Piraeus",
@@ -35,6 +35,6 @@
     "sessionLanguagesLabel": "Session languages",
     "sessionLanguages": "Greek and English.",
     "geographyHeading": "Private practice in Piraeus",
-    "geography": "In-person sessions take place at my private practice in Piraeus. Online sessions are also available."
+    "geography": "In-person sessions take place at my private practice in Piraeus. The office is accessible to people with disabilities and wheelchair users. Online sessions are also available."
   }
 }

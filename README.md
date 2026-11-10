@@ -1,6 +1,6 @@
 # The art of healing
 
-A static Astro website for psychologist Polyxeni Petta, with approved Greek and English content on Home, Biography (`bio/`), Services (`services/`) and Contact (`contact/`). The private office is in Piraeus, serving Athens and Korinthos, with online sessions and Greek/English sessions available. All public wording and contact values are editable in dedicated JSON files under `src/content/`; see [the content editing guide](src/content/README.md). The site remains in demonstration publication mode pending launch review. Implementation is tracked in [Implement the bilingual static psychologist website](https://github.com/LaskasP/the-art-of-healing/issues/8).
+A static Astro website for psychologist Polyxeni Petta, with approved Greek and English content on Home, Biography (`bio/`), Services (`services/`) and Contact (`contact/`). The wheelchair-accessible private office is in Piraeus, serving Athens, with online sessions and Greek/English sessions available. All public wording and contact values are editable in dedicated JSON files under `src/content/`; see [the content editing guide](src/content/README.md). The site remains in demonstration publication mode pending launch review. Implementation is tracked in [Implement the bilingual static psychologist website](https://github.com/LaskasP/the-art-of-healing/issues/8).
 
 ## Build and run locally
 
@@ -134,7 +134,7 @@ See [src/content/README.md](src/content/README.md) for the complete editing work
 - `src/content/interface.json` holds branding, navigation labels, language-switch names, accessibility wording and the footer.
 - The root `/content/` reference folder is ignored; the website's `src/content/` files are version-controlled and sufficient for a clean build. The approved source CV is not required at build time.
 
-Use paired `el` and `en` values for translated text. Keep actual contact values out of templates. Missing shared contact details may be set to `null`, which renders the localized fallback. Piraeus is the only private office; Athens and Korinthos are the service area.
+Use paired `el` and `en` values for translated text. Keep actual contact values out of templates. Missing shared contact details may be set to `null`, which renders the localized fallback. Piraeus is the only private office; the service area includes Athens. The user has confirmed wheelchair access to the office.
 
 The Contact acceptance fixture replaces only `src/content/contact-details.json` in an isolated temporary source tree, demonstrating that content-file changes reach the output without template changes. Its marked test data in `tests/fixtures/contact.json` must not be copied into real content. The publication fixtures intentionally leave Services out of their partial-readiness list to test per-page gating; this does not indicate missing Services copy.
 

@@ -25,6 +25,7 @@ for (const entry of routes) {
     await page.goto(`${baseURL}${entry.route}`);
     const publicBase = `${testInfo.project.metadata.publicOrigin ?? 'https://laskasp.github.io'}${new URL(baseURL!).pathname.replace(/\/$/, '')}`;
     await expect(page.locator('html')).toHaveAttribute('lang', entry.lang);
+    await expect(page.locator('body')).not.toContainText(/Korinthos|Corinth|Κ[οό]ρ[ιί]νθ/iu);
     await expect(page).toHaveTitle(entry.title);
     await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', entry.description);
     await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
